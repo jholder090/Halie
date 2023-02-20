@@ -1,0 +1,19 @@
+{
+  "name": "aguila-performance-v1",
+  "version": "1.0.0",
+  "description": "proto aguila performance webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aguilana/aguila-performance.git"
+  },
+  "author": "Nicolas Aguila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aguilana/aguila-performance/issues"
+  },
+  "homepage": "https://github.com/aguilana/aguila-performance#readme"
+}
