@@ -1,6 +1,7 @@
 node_modules
+public/bundle.js
+public/bundle.js.map
 .DS_Store
 package-lock.json
 .env
-.history
-client/env.js
+.env.local
