@@ -4,7 +4,6 @@ const {
 } = require("../server/db");
 
 const { users } = require("./users");
-console.log("USERS", users);
 
 /**
  * seed - this function clears the database, updates tables to
@@ -14,9 +13,7 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
   await Promise.all(users.map((user) => User.create(user)));
-
   console.log("USER MAGIC METHODS: ", Object.keys(User.prototype));
-
   console.log(`seeded successfully ${users.length} users`);
 }
 
