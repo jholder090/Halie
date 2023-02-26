@@ -14,13 +14,17 @@
 7) $ git branch -m master main
 ```
 step one creates an empty directory whereever you want located
+
 step two you will then move into that directory
+
 step three you will initialize git locally (once in the directory)
 
 - you can then do a ls -la command in the dir to see if git init has occurred
 
 step four you remote add this boilerplate
+
 step five you fetch the name of your directory
+
 step six you merge the files
 
 ## GITHUB REPO
