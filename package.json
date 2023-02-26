@@ -1,7 +1,7 @@
 {
-  "name": "aguila-performance-v1",
-  "version": "1.0.0",
-  "description": "prototype aguila performance webpage",
+  "name": "name-of-your-project",
+  "version": "1.0.1",
+  "description": "description - something really cool can go here",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aguilana/aguila-performance.git"
+    "url": "git+https://github.com/aguilana/boilerplate.git"
   },
-  "author": "Nicolas Aguila",
+  "author": "Nick Aguila - aguilana on GitHub",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aguilana/aguila-performance/issues"
+    "url": "https://github.com/aguilana/boilerplate/issues"
   },
-  "homepage": "https://github.com/aguilana/aguila-performance#readme",
+  "homepage": "https://github.com/aguilana/boilerplate#readme",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
