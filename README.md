@@ -5,14 +5,21 @@
 ```
 - Don't FORK OR CLONE
 - Create empty repo on local machine command line
-1) $ mkdir "name" // creates folder
-2) $ cd "name"    // moves into folder
-3) $ git init     // initializes git
+1) $ mkdir "name" 
+2) $ cd "name"    
+3) $ git init   
 4) $ git remote add "name" git@github.com:aguilana/boilerplate.git
 5) $ git fetch "name"
 6) $ git merge "name"/main
 7) $ git branch -m master main
 ```
+step one creates an empty directory whereever you want located
+step two you will then move into that directory
+step three you will initialize git locally (once in the directory)
+- you can then do a ls -la command in the dir to see if git init has occurred
+step four you remote add this boilerplate
+step five you fetch the name of your directory
+step six you merge the files
 
 ## GITHUB REPO
 
