@@ -26,7 +26,7 @@ Create an empty github repo and then add from local machine and you should be al
 4. createdb in postgres to whatever you name the package.json
 5. for testing can create a 
 ```
-- $ createdb "name"-test 
+$ createdb "name"-test 
 ```
 6. Sync and Seed by running npm run seed
 7. npm run start:dev to get started and will run on local host 5000
