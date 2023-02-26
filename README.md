@@ -5,13 +5,9 @@
 ```
 1. Don't FORK OR CLONE
 2. Create empty repo on local machine command line
-```
-
-- mkdir "name"
-- cd "name"
-- git init
-
-```
+    -- mkdir "name"
+    -- cd "name"
+    -- git init
 3) git remote add "name" git@github.com:aguilana/boilerplate.git
 4) git fetch "name"
 5) git merge "name"/main
