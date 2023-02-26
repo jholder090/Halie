@@ -19,7 +19,7 @@ To fork and clone a repository on GitHub, you can follow these steps:
 
 Copy code
 ```
-git clone https://github.com/your-username/forked-repo.git
+git clone https://github.com/your-username/boilerplate.git
 ```
 7) Replace "your-username" with your GitHub username and "forked-repo" with the name of the forked repository.
 
