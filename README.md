@@ -5,7 +5,7 @@
 
 To fork and clone a repository on GitHub, you can follow these steps:
 
-1) Go to the repository on GitHub that you want to fork and clone.
+1) Go to the repository on GitHub (THIS ONE :)).
 
 2) Click on the "Fork" button in the upper right corner of the page. This will create a copy of the repository under your own account.
 
