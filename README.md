@@ -1,11 +1,11 @@
 # BOILERPLATE START-UP
 
-## setup to use tailwindcss
-
 ## START _ IMPORTANT _
 
+```
 1. Don't FORK OR CLONE
 2. Create empty repo on local machine command line
+```
 
 - mkdir "name"
 - cd "name"
@@ -34,5 +34,22 @@ Create an empty github repo and then add from local machine and you should be al
 - start:dev will both start your server and build your client side files using webpack
 - start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
 - start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
+
+## SETUP
+
+As you will see this is setup to use the following:
+
+```
+1. React
+2. Redux
+3. Express
+4. Sequelize
+5. Postgres
+6. Webpack
+7. Babel
+8. CSS Modules
+9. TailwindCSS
+10. .env files
+```
 
 #Happy Coding
