@@ -17,16 +17,15 @@ To fork and clone a repository on GitHub, you can follow these steps:
 
 6) Use the git clone command followed by the repository URL to clone the repository to your local machine. For example, if you are using HTTPS, the command would be:
 
-
-7) Copy code
+Copy code
 ```
 git clone https://github.com/your-username/forked-repo.git
 ```
-8) Replace "your-username" with your GitHub username and "forked-repo" with the name of the forked repository.
+7) Replace "your-username" with your GitHub username and "forked-repo" with the name of the forked repository.
 
 9) Once the cloning process is complete, you will have a local copy of the forked repository on your machine. You can make changes to the code and push the changes back to your forked repository on GitHub using standard Git commands such as git add, git commit, and git push.
 
-10) Note that when you fork a repository, you may not have write access to the original repository, so you may not be able to push changes directly to it. Instead, you can make changes to your forked repository and submit a pull request to the original repository owner for review and potential merge.
+9) Note that when you fork a repository, you may not have write access to the original repository, so you may not be able to push changes directly to it. Instead, you can make changes to your forked repository and submit a pull request to the original repository owner for review and potential merge.
 
 ## THE NOT fork and clone option
 ```
