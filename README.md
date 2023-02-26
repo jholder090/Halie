@@ -3,7 +3,7 @@
 ## START! ***IMPORTANT***
 
 ```
-- Don't FORK OR CLONE
+- Don't FORK OR CLONE if you want to make this your own boilerplate! Then proceed
 - Create empty repo on local machine command line
 1) $ mkdir "name" 
 2) $ cd "name"    
@@ -26,6 +26,10 @@ step four you remote add this boilerplate
 step five you fetch the name of your directory
 
 step six you merge the files
+
+```
+FORK this REPO and then CLONE to own machine if you want to simply use this boilerplate everytime!
+```
 
 ## GITHUB REPO
 
