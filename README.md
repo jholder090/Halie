@@ -24,7 +24,10 @@ Create an empty github repo and then add from local machine and you should be al
 2. create a .env or .env.local file in the root directory and add your secrets, keys, etc.
 3. change the name of the package.json to whatever name you want
 4. createdb in postgres to whatever you name the package.json
-5. for testing can create a 'createdb "name"-test' as well
+5. for testing can create a 
+```
+- $ createdb "name"-test 
+```
 6. Sync and Seed by running npm run seed
 7. npm run start:dev to get started and will run on local host 5000
 
