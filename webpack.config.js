@@ -44,6 +44,20 @@ module.exports = {
         ],
       },
       {
+        test: /\.(jpg|jpeg|png|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/[path]',
+              publicPath: '/assets/[path]',
+              context: path.resolve(__dirname, 'src'),
+            },
+          },
+        ],
+      },
+      {
         test: /jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
