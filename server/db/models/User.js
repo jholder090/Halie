@@ -6,6 +6,10 @@ const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 5;
 
 const User = db.define("user", {
+  role: {
+    type: Sequelize.ENUM(["CUST", "ADMIN"]),
+    allowNull: false
+  },
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -23,17 +27,12 @@ const User = db.define("user", {
       notEmpty: true,
     },
   },
-  username: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [6, 20],
+      len: [3, 20],
     },
   },
 });
