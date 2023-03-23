@@ -1,9 +1,10 @@
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: ['./src/index.js'],
+  entry: ['./client/index.js'],
   output: {
     path: __dirname + '/public',
     filename: 'bundle.js',
@@ -52,7 +53,7 @@ module.exports = {
               name: '[name].[ext]',
               outputPath: 'assets/[path]',
               publicPath: '/assets/[path]',
-              context: path.resolve(__dirname, 'src'),
+              context: path.resolve(__dirname, 'client'),
             },
           },
         ],
