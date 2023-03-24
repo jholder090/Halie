@@ -5,9 +5,12 @@ import {
  } from './components/index'
 
 const AppRoutes = () => {
+
+
+
   return (
     <Routes>
-      <Route path='/banana' element={<AllProducts />} />
+      <Route path='/' element={<AllProducts />} />
     </Routes>
   )
 }
