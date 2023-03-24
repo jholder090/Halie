@@ -16,11 +16,12 @@ app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
 
 app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "..", "public/index.html"))
+  res.sendFile("/home/jholder090/Halie/public/index.html")
 );
 
 // static file-serving middleware
-app.use(express.static(path.join(__dirname, "..", "public")));
+console.log("DIRNAME ======>>>>>>", __dirname)
+app.use(express.static("/home/jholder090/Halie/public"));
 
 // any remaining requests with an extension (.js, .css, etc.) send 404
 app.use((req, res, next) => {

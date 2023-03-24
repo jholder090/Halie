@@ -1,11 +1,10 @@
 import React from "react";
+import AppRoutes from './AppRoutes';
 
 const App = () => {
-  console.log("PROCESS", process.env.JWT);
+  // console.log("PROCESS", process.env.JWT);
   return (
-    <div>
-      <h1>THIS IS THE APP</h1>
-    </div>
+    <AppRoutes />
   );
 };
 
