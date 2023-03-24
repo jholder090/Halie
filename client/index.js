@@ -8,5 +8,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 const root = createRoot(document.getElementById("root"));
 
 root.render(
-  <h1> HELLO WORLD! </h1>
+  <Router>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  </Router>
 );

@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AllProducts from './components/AllProducts'
+import AllProducts from './components/allProducts/AllProducts'
 
 const AppRoutes = () => {
   return (
-    <div>HELLO WORLDZ!</div>
+    <div>HELLO WORLDasdf!</div>
   )
 }
 
