@@ -1,10 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AllProducts from './components/allProducts/AllProducts'
+import {
+  AllProducts,
+ } from './components/index'
 
 const AppRoutes = () => {
   return (
-    <div>HELLO WORLDasdf!</div>
+    <Routes>
+      <Route path='/banana' element={<AllProducts />} />
+    </Routes>
   )
 }
 
