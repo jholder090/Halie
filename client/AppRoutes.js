@@ -9,7 +9,7 @@ const AppRoutes = () => {
 
 
   return (
-    <div className='h-4/5'>
+    <div className='main h-4/5'>
       <Routes >
         <Route path='/' element={<AllProducts />} />
       </Routes>
