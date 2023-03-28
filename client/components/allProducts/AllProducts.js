@@ -25,7 +25,7 @@ const AllProducts = () => {
               <img src={product.imageUrl} />
             </div>
             <div className='allProducts-productDescription border-solid border-2 border-black '>{product.description}</div>
-            <div className='allProducts-productPrice border-solid border-2 border-black '>{product.price}</div>
+            <div className='allProducts-productPrice border-solid border-2 border-black '>${product.price}</div>
           </div>
 
         )
