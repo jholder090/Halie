@@ -19,9 +19,13 @@ const AllProducts = () => {
     <div className='allProducts h-full flex justify-center flex-wrap'>
       {products.map(product => {
         return (
-          <div className='allProducts-productContainer h-52 w-52 border-solid border-2 border-black mx-2 ' key={product.id}>
-            <div className='allProducts-productName'>{product.name}</div>
-            <div className='allProducts-productPrice'>{product.price}</div>
+          <div className='allProducts-productContainer h-52 w-52 border-solid border-2 border-black mx-2 flex-col' key={product.id}>
+            <div className='allProducts-productName border-solid border-2 border-black '>{product.name}</div>
+            <div className='allProducts-productImageUrl border-solid border-2 border-black '>
+              <img src={product.imageUrl} />
+            </div>
+            <div className='allProducts-productDescription border-solid border-2 border-black '>{product.description}</div>
+            <div className='allProducts-productPrice border-solid border-2 border-black '>{product.price}</div>
           </div>
 
         )

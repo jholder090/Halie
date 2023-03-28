@@ -70,18 +70,21 @@ async function seed() {
       description: "Great for moistening dried and cracking skin.",
       price: 12.99,
       quantity: 50,
+      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
     },
     {
       name: "Eye cream",
       description: "Get rid of those bags under your eyes.",
       price: 9.99,
       quantity: 30,
+      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
     },
     {
       name: "Vitamin E Oil",
       description: "Heals scars and blemishes.",
       price: 7.99,
       quantity: 25,
+      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
     }
   ]
 
