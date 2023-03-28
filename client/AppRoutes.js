@@ -2,17 +2,19 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   AllProducts,
- } from './components/index'
+} from './components/index'
 
 const AppRoutes = () => {
 
 
 
   return (
-    <Routes>
-      <Route path='/' element={<AllProducts />} />
-    </Routes>
-  )
+    <div className='h-4/5'>
+      <Routes >
+        <Route path='/' element={<AllProducts />} />
+      </Routes>
+      </div>
+      )
 }
 
 export default AppRoutes;

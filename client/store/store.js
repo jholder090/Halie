@@ -8,7 +8,7 @@ const store = configureStore({
     auth: authReducer,
     allProducts: allProductsReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export default store;
