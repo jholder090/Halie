@@ -2,30 +2,55 @@ import React, { useState, useEffect } from "react";
 
 
 const Navbar = () => {
-  const [scrollTop, setScrollTop] = useState(0);
-  const [navbarWidth, setNavbarWidth] = useState('36')
+  // const [scrollTop, setScrollTop] = useState(0);
+  // const [navbarWidth, setNavbarWidth] = useState('36')
+  const [isShrunk, setShrunk] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-  }, [scrollTop])
+    const handleNavbarHeight = () => {
+      setShrunk((isShrunk) => {
+        if (!isShrunk && (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)) {
+          return true;
+        }
+        if (isShrunk && document.body.scrollTop < 4 && document.documentElement.scrollTop < 4) {
+          return false;
+        }
+        return isShrunk;
+      })
+    };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-  }, [scrollTop])
+    window.addEventListener('scroll', handleNavbarHeight);
 
+    return () => window.removeEventListener('scroll', handleNavbarHeight, []);
+  })
 
-  const handleScroll = () => {
-    setScrollTop(window.pageYOffset);
-    console.log("Y OFF SET --->", scrollTop)
-    if (scrollTop > 99) {
-      setNavbarWidth('20')
-    } else {
-      setNavbarWidth('36')
-    }
-  }
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll)
+  // }, [scrollTop])
+
+  // useEffect(() => {
+  //   handleNavbarWidth();
+  // }, [scrollTop])
+
+  // const handleScroll = () => {
+  //   setScrollTop(window.pageYOffset);
+  //   console.log("Y OFF SET --->", scrollTop)
+  // }
+
+  // const handleNavbarWidth = () => {
+  //   if (scrollTop > 99) {
+  //     setNavbarWidth('20')
+  //   } else {
+  //     setNavbarWidth('36')
+  //   }
+  // }
+
+  // `navbar  sticky top-0 flex justify-between items-center px-4 bg-slate-600`
 
   return (
-    <div className={`navbar h-${navbarWidth} sticky top-0 flex justify-between items-center px-4 bg-slate-600`} x-data='{navbarOpen: false}'>
+    <div className={isShrunk ? 'navbar h-20 sticky top-0 flex justify-between items-center px-4 bg-slate-600' :
+    'navbar h-36 sticky top-0 flex justify-between items-center px-4 bg-slate-600'
+    } x-data='{navbarOpen: false}'>
       <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
       <nav>
         <button className='md:hidden'>
@@ -38,13 +63,13 @@ const Navbar = () => {
             <a href='#'>Home</a>
           </li>
           <li>
-          <a href='#'>Products</a>
+            <a href='#'>Products</a>
           </li>
           <li>
-          <a href='#'>About</a>
+            <a href='#'>About</a>
           </li>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
     </div >
   )
 }
