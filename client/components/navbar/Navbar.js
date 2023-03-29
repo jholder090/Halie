@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 
 const Navbar = () => {
+  const [scrollTop, setScrollTop] = useState(0);
+  const [navbarWidth, setNavbarWidth] = useState('36')
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+  }, [scrollTop])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+  }, [scrollTop])
+
+
+  const handleScroll = () => {
+    setScrollTop(window.pageYOffset);
+    console.log("Y OFF SET --->", scrollTop)
+    if (scrollTop > 99) {
+      setNavbarWidth('20')
+    } else {
+      setNavbarWidth('36')
+    }
+  }
+
   return (
-    <div className='navbar h-1/5 sticky top-0 flex justify-between items-center px-4 bg-slate-600' x-data='{navbarOpen: false}'>
+    <div className={`navbar h-${navbarWidth} sticky top-0 flex justify-between items-center px-4 bg-slate-600`} x-data='{navbarOpen: false}'>
       <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
       <nav>
-        <button className='md:hidden' @click=>
+        <button className='md:hidden'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
