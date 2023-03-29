@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts, selectAllProducts } from '../slices/allProductsSlice';
 import './allProducts.css'
@@ -8,11 +8,25 @@ import './allProducts.css'
 const AllProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  console.log("PRODUCTS --->", products)
+  const [isHover, setHover] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, []);
+
+  let buttons = document.getElementsByTagName('button')
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].onmouseover = function () {
+      handleHover();
+    }
+    buttons[i].onmouseout = function () {
+      handleHover();
+    }
+  }
+  const handleHover = () => {
+     setHover(!isHover);
+
+  }
 
   return (
     <>
@@ -36,7 +50,7 @@ const AllProducts = () => {
       <div className='allProducts h-full flex justify-center flex-wrap'>
         {products.map(product => {
           return (
-            <div className='allProducts-productContainer max-w-sm flex-col bg-white border border-gray-200 m-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700' key={product.id}>
+            <div className='allProducts-productContainer max-w-sm h-100 flex-col bg-white border border-gray-200 m-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700' key={product.id}>
               <div className='allProducts-productImageUrl'>
                 <a href="#">
                   <img className="rounded-t-lg" src="https://i.postimg.cc/9Mw08wks/lotion.png" alt="Blah" />
@@ -55,12 +69,13 @@ const AllProducts = () => {
                 </div>
               </div>
               <div className='allProducts-cartInteractions'>
-                <div className='allProducts-cartActions w-85 h-9 border-solid border-black border-2'>
-                  CART ACTIONS
+                <div className={isHover ? 'allProducts-cartActions w-85 h-9 z-20 bg-black transition-colors duration-500 ease-in-out'
+                  :
+                  'allProducts-cartActions w-85 h-9 z-20  opacity-100 transition-colors duration-500 ease-in-out'}>
                 </div>
                 <button href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   Buy now
-                  <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                 </button>
               </div>
 

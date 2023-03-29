@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       spacing: {
         '85': '360px',
+        '100': '620px'
       },
       transitionProperty: {
         'height': 'height',
