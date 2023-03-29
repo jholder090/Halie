@@ -18,38 +18,13 @@ const Navbar = () => {
         return isShrunk;
       })
     };
-
     window.addEventListener('scroll', handleNavbarHeight);
-
-    return () => window.removeEventListener('scroll', handleNavbarHeight, []);
-  })
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll)
-  // }, [scrollTop])
-
-  // useEffect(() => {
-  //   handleNavbarWidth();
-  // }, [scrollTop])
-
-  // const handleScroll = () => {
-  //   setScrollTop(window.pageYOffset);
-  //   console.log("Y OFF SET --->", scrollTop)
-  // }
-
-  // const handleNavbarWidth = () => {
-  //   if (scrollTop > 99) {
-  //     setNavbarWidth('20')
-  //   } else {
-  //     setNavbarWidth('36')
-  //   }
-  // }
-
-  // `navbar  sticky top-0 flex justify-between items-center px-4 bg-slate-600`
+    return () => window.removeEventListener('scroll', handleNavbarHeight);
+  }, [])
 
   return (
-    <div className={isShrunk ? 'navbar h-20 sticky top-0 flex justify-between items-center px-4 bg-slate-600' :
-    'navbar h-36 sticky top-0 flex justify-between items-center px-4 bg-slate-600'
+    <div className={isShrunk ? 'navbar h-20 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out' :
+      'navbar h-36 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out'
     } x-data='{navbarOpen: false}'>
       <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
       <nav>
