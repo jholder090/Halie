@@ -4,6 +4,9 @@ module.exports = {
   darkMode: true, // or 'media' or 'class'
   theme: {
     extend: {
+      spacing: {
+        '85': '360px',
+      },
       transitionProperty: {
         'height': 'height',
       }
