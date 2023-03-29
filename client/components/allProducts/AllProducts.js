@@ -36,7 +36,7 @@ const AllProducts = () => {
       <div className='allProducts h-full flex justify-center flex-wrap'>
         {products.map(product => {
           return (
-            <div className='allProducts-productContainer max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700' key={product.id}>
+            <div className='allProducts-productContainer max-w-sm bg-white border border-gray-200 m-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700' key={product.id}>
               <div className='allProducts-productImageUrl'>
                 <a href="#">
                   <img className="rounded-t-lg" src="https://i.postimg.cc/9Mw08wks/lotion.png" alt="Blah" />
