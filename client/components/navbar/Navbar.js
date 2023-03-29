@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <div className={isShrunk ? 'navbar h-20 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out' :
       'navbar h-36 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out'
-    } x-data='{navbarOpen: false}'>
+    }>
       <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
       <nav>
         <button className='md:hidden'>
