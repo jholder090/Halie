@@ -29,7 +29,24 @@ const AllProducts = () => {
   //   console.log(event)
   // }
   const handleButtonHover = (e) => {
-    setHover(!isHover);
+    const product = products.filter((product) => {
+      return product.id == e.target.id;
+    });
+    console.log("PRODUCT!", product)
+    console.log("EVENT!", e.target.id)
+    const hiddenDiv = document.querySelector(`.product${e.target.id}`);
+    console.log("HIDDEN DIV!", hiddenDiv);
+    console.log("STYLE!", hiddenDiv.style)
+    hiddenDiv.style.backgroundColor = 'green';
+    hiddenDiv.style.opacity = 1;
+    hiddenDiv.style.display = 'block';
+  }
+
+  const handleButtonLeave = (e) => {
+    const hiddenDiv = document.querySelector(`.product${e.target.id}`);
+    hiddenDiv.style.backgroundColor = 'red';
+    hiddenDiv.style.opacity = 0;
+    hiddenDiv.style.display = 'hidden'
   }
 
   return (
@@ -74,12 +91,9 @@ const AllProducts = () => {
               </div>
               <div className='allProducts-cartInteractions'>
                 <>
-                {isHover ?
-                <div className='allProducts-cartActions hover:bg-black w-85 h-9 z-20 transition-all duration-500 ease-in-out'>Hello!</div>
-                :
-                <div className='allProducts-cartActions hover:bg-black w-85 h-9 z-20 transition-all duration-500 ease-in-out'>Goodbye!</div>
-                }
-                  <button id={product.id} onMouseEnter={handleButtonHover} onClick={() => dispatch(addToCart(product))} href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+{/* ............................... */}
+                <div id={product.id} onMouseEnter={(e) => handleButtonHover(e)} onMouseLeave={(e) => handleButtonLeave(e)} className={`allProducts-cartActions product${product.id} w-85 h-9 z-20 opacity-0 transition-all duration-500 ease-in-out text-black`}>Hello!</div>
+                  <button id={product.id} onMouseEnter={(e) => handleButtonHover(e)} onMouseLeave={(e) => handleButtonLeave(e)} onClick={() => dispatch(addToCart(product))} href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Buy now
                     <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                   </button>
