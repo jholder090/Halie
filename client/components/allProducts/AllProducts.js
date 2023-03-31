@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts, selectAllProducts } from '../slices/allProductsSlice';
+import { addToCart } from "../slices/visitorCartSlice";
 import './allProducts.css'
 
 
@@ -14,18 +15,21 @@ const AllProducts = () => {
     dispatch(fetchAllProducts());
   }, []);
 
-  let buttons = document.getElementsByTagName('button')
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].onmouseover = function () {
-      handleHover();
-    }
-    buttons[i].onmouseout = function () {
-      handleHover();
-    }
-  }
-  const handleHover = () => {
-     setHover(!isHover);
-
+  // let buttons = document.getElementsByTagName('button')
+  // for (let i = 0; i < buttons.length; i++) {
+  //   buttons[i].onmouseover = function (event) {
+  //     handleHover(event);
+  //   }
+  //   buttons[i].onmouseout = function (event) {
+  //     handleHover(event);
+  //   }
+  // }
+  // const handleHover = (event) => {
+  //   setHover(!isHover);
+  //   console.log(event)
+  // }
+  const handleButtonHover = (e) => {
+    setHover(!isHover);
   }
 
   return (
@@ -69,17 +73,18 @@ const AllProducts = () => {
                 </div>
               </div>
               <div className='allProducts-cartInteractions'>
-                <div className={isHover ? 'allProducts-cartActions w-85 h-9 z-20 bg-black transition-colors duration-500 ease-in-out'
-                  :
-                  'allProducts-cartActions w-85 h-9 z-20  opacity-100 transition-colors duration-500 ease-in-out'}>
-                </div>
-                <button href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Buy now
-                  <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                </button>
+                <>
+                {isHover ?
+                <div className='allProducts-cartActions hover:bg-black w-85 h-9 z-20 transition-all duration-500 ease-in-out'>Hello!</div>
+                :
+                <div className='allProducts-cartActions hover:bg-black w-85 h-9 z-20 transition-all duration-500 ease-in-out'>Goodbye!</div>
+                }
+                  <button id={product.id} onMouseEnter={handleButtonHover} onClick={() => dispatch(addToCart(product))} href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Buy now
+                    <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                  </button>
+                </>
               </div>
-
-
             </div>
 
           )
