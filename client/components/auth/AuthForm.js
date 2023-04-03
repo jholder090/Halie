@@ -12,6 +12,8 @@ const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.auth.me);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
@@ -43,6 +45,7 @@ const AuthForm = ({ name, displayName }) => {
         method: formName,
       })
     );
+    console.log("This is user in the handleSubmit", user)
   };
 
   return (
@@ -104,7 +107,7 @@ const AuthForm = ({ name, displayName }) => {
         </div>
         <div>
           <button type="submit">
-            {displayName}
+            Submit
           </button>
         </div>
       </form>
