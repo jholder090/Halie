@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import {me} from '../auth/authSlice'
+import { fetchUserInfoAsync, selectUserInfo } from "../slices/userCartSlice";
 
 const Navbar = () => {
   // const [scrollTop, setScrollTop] = useState(0);
   // const [navbarWidth, setNavbarWidth] = useState('36')
   const [isShrunk, setShrunk] = useState(false);
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.me);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const userInfo = useSelector(selectUserInfo);
+  console.log("USER INFO", userInfo)
+  const userCart = userInfo.cart?.products
+  console.log("USERCART", userCart)
+
+  useEffect(() => {
+    dispatch(fetchUserInfoAsync(user.id))
+  }, [user]);
 
   useEffect(() => {
     const handleNavbarHeight = () => {
@@ -31,8 +41,16 @@ const Navbar = () => {
     for (let product of cart) {
       size += product.quantity;
     }
-    console.log("VISITOR CART SIZE", size);
     return size;
+  }
+
+  const getUserCartSize = (userCart) => {
+    let size = 0;
+    userCart?.map(cartItem => {
+      size += cartItem.cart_products.quantity;
+    }
+    )
+    return size
   }
 
   return (
@@ -42,12 +60,19 @@ const Navbar = () => {
       <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
       <small>Shopping as: <strong>{user.firstName ? user.firstName : "Guest"}</strong></small>
       <nav>
-        {visitorCart.length ?
-        <small>({getVisitorCartSize(visitorCart)})</small>
-        :
-        null
-         }
-        <button className='md:hidden'>
+        {isLoggedIn ? (
+          <div>
+            <small>({getUserCartSize(userCart)})</small>
+          </div>
+        ) : (
+          <div>
+            <small>({getVisitorCartSize(visitorCart)})</small>
+          </div>
+        )}
+
+
+
+        < button className='md:hidden'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>

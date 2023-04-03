@@ -60,6 +60,37 @@ router.get("/customers", async (req, res, next) => {
   }
 });
 
+// CUSTOMERS GET /api/users/customer/:id
+// includes all Cart/Order/Product information for particular user
+router.get("/customer/:id", async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id, {
+      where: {
+        role: "CUST"
+      },
+      include: [{
+        model: Cart,
+        // as: "userCart",
+        include: {
+          model: Product,
+          // as: "cartProducts"
+        }
+      },
+      {
+        model: Order,
+        // as: "userOrders",
+        include: {
+          model: Product,
+          // as: "orderProducts"
+        }
+      }]
+    });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // ADMIN GET /api/users/admin
 router.get("/admin", async (req, res, next) => {
   try {

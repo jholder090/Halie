@@ -10,6 +10,7 @@ const AllProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
   const [isHover, setHover] = useState(false);
+  const user = useSelector(state => state.auth.me);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -95,7 +96,7 @@ const AllProducts = () => {
                   {/* ............................... */}
                   <div id={product.id} onMouseEnter={(e) => handleButtonHover(e)} onMouseLeave={(e) => handleButtonLeave(e)} className={`allProducts-cartActions product${product.id} w-85 h-9 z-40 flex justify-between translate-y-full opacity-0 transition-all duration-500 ease-in-out text-black`}>
                     <div>HELLO!</div>
-                    <button onClick={() => console.log("CLICKED!")}className="bg-blue-500 hover:bg-blue-700 text-white z-40 font-bold py-2 px-4 rounded pointer-events-none">
+                    <button onClick={() => console.log("CLICKED!")} className="bg-blue-500 hover:bg-blue-700 text-white z-40 font-bold py-2 px-4 rounded pointer-events-none">
                       Button
                     </button>
                   </div>

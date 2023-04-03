@@ -11,7 +11,6 @@ import {
 const AppRoutes = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.me);
-  console.log("APP ROUTES USER", user)
 
   useEffect(() => {
     dispatch(me());
@@ -21,7 +20,7 @@ const AppRoutes = () => {
     <div className='main h-4/5'>
       <Routes >
         <Route path='/' element={<AllProducts />} />
-        <Route path='/auth' element={<Login />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </div>
   )

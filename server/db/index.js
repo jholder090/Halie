@@ -11,38 +11,38 @@ const OrderProducts = require('./models/OrderProducts');
 
 // Associations
 User.hasOne(Cart, {
-  as: "userCart",
+  // as: "userCart",
   foreignKey: "userId"
 });
 Cart.belongsTo(User, {
-  as: "userCart",
+  // as: "userCart",
   foreignKey: "userId"
 });
 
 User.hasMany(Order, {
-  as: "userOrders",
+  // as: "userOrders",
   foreignKey: "userId"
 });
 Order.belongsTo(User, {
-  as: "userOrders",
+  // as: "userOrders",
   foreignKey: "userId"
 });
 
 Cart.belongsToMany(Product, {
-  as: "cartProducts",
+  // as: "cartProducts",
   through: 'cart_products'
 });
 Product.belongsToMany(Cart, {
-  as: "cartProducts",
+  // as: "cartProducts",
   through: 'cart_products'
 });
 
 Order.belongsToMany(Product, {
-  as: "orderProducts",
+  // as: "orderProducts",
   through: 'order_products'
 });
 Product.belongsToMany(Order, {
-  as: "orderProducts",
+  // as: "orderProducts",
   through: 'order_products'
 });
 
