@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import {me} from '../auth/authSlice'
 
 const Navbar = () => {
   // const [scrollTop, setScrollTop] = useState(0);
   // const [navbarWidth, setNavbarWidth] = useState('36')
   const [isShrunk, setShrunk] = useState(false);
+  const user = useSelector((state) => state.auth.me);
 
   useEffect(() => {
     const handleNavbarHeight = () => {
@@ -38,6 +40,7 @@ const Navbar = () => {
       'navbar h-36 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out'
     }>
       <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
+      <small>Shopping as: <strong>{user.firstName ? user.firstName : "Guest"}</strong></small>
       <nav>
         {visitorCart.length ?
         <small>({getVisitorCartSize(visitorCart)})</small>
@@ -51,7 +54,7 @@ const Navbar = () => {
         </button>
         <ul className='fixed left-0 right-0 bg-slate-600 min-h-screen p-4 space-y-4 transform translate-x-full md:relative md:flex md:min-h-0 md:space-y-0 md:space-x-6 md:p-0 md:translate-x-0'>
           <li>
-            <a onClick={() => getVisitorCartSize(visitorCart)} href='#'>Home</a>
+            <a href='#'>Home</a>
           </li>
           <li>
             <a href='#'>Products</a>

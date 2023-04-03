@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { me } from './components/auth/authSlice'
 import {
   AllProducts,
   AuthForm,
@@ -8,8 +9,13 @@ import {
 } from './components/index'
 
 const AppRoutes = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.me);
+  console.log("APP ROUTES USER", user)
 
-
+  useEffect(() => {
+    dispatch(me());
+  }, []);
 
   return (
     <div className='main h-4/5'>
@@ -17,8 +23,8 @@ const AppRoutes = () => {
         <Route path='/' element={<AllProducts />} />
         <Route path='/auth' element={<Login />} />
       </Routes>
-      </div>
-      )
+    </div>
+  )
 }
 
 export default AppRoutes;

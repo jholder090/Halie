@@ -7,12 +7,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.me);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(authenticate({ email, password, method: "login" }));
-    console.log("USER!", user);
   };
 
 

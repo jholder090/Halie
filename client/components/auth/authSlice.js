@@ -13,11 +13,13 @@ export const me = createAsyncThunk("auth/me", async () => {
   const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
+      console.log("TOKEN EXISTS!", token)
       const res = await axios.get("/auth/me", {
         headers: {
           authorization: token,
         },
       });
+      console.log("RES DATA", res.data)
       return res.data;
     } else {
       return {};
