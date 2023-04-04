@@ -12,22 +12,22 @@ export const fetchUserInfoAsync = createAsyncThunk("userCart/fetchAll", async (i
 
 export const addToUserCartAsync = createAsyncThunk(
   "cart/add",
-  async ({ quantity, cartId, productId, imageUrl }) => {
-    console.log(`stuff to add to cart: quantity: ${quantity}, cartId: ${cartId}, productId: ${productId}`)
-    try {
-      await axios.post(`http://localhost:3000/api/cart/${cartId}`, {
-        quantity,
-        cartId,
-        productId,
-        imageUrl
-      });
-const { data } = await axios.get(
-  `http://localhost:3000/api/cart/${cartId}`
-);
-return data;
-    } catch (err) {
-      console.log(err);
-    }
+  async ({ quantity, price, productId, cartId }) => {
+    console.log(`stuff to add to user cart: quantity: ${quantity}, cartId: ${cartId}, productId: ${productId}, price: ${price}`)
+//     try {
+//       await axios.post(`http://localhost:3000/api/cart/${cartId}`, {
+//         quantity,
+//         cartId,
+//         productId,
+//         imageUrl
+//       });
+// const { data } = await axios.get(
+//   `http://localhost:3000/api/cart/${cartId}`
+// );
+// return data;
+//     } catch (err) {
+//       console.log(err);
+//     }
   }
 );
 
