@@ -4,25 +4,14 @@ const {
 } = require("../db");
 module.exports = router;
 
-const requireToken = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
-    if (!token) {
-      return res.status(401).send("Access denied");
-    }
-    const user = await User.findByToken(token);
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
 
-// USERS GET /api/users
+
+// USERS GET /api/carts
 router.get("/", async (req, res, next) => {
   try {
-    const users = await User.findAll();
-    res.json(users);
+    const carts = await Cart.findAll({
+    });
+    res.json(carts);
   } catch (err) {
     next(err);
   }
@@ -88,32 +77,6 @@ router.get("/customer/:id", async (req, res, next) => {
     res.json(user);
   } catch (err) {
     next(err);
-  }
-});
-
-// CUSTOMER POST PRODUCT TO CART /api/users/customer/:id
-router.post('/customer/:id', async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.params.id, {
-      where: {
-        role: "CUST"
-      },
-      include: {
-        model: Cart,
-        // as: "userCart",
-        include: {
-          model: Product,
-          // as: "cartProducts"
-        }
-      },
-    })
-    const products = user.cart.products
-    console.log("OLD API PRODUCTS", products)
-    await products.push(req.body);
-    console.log("NEW API PRODUCTS", products)
-    res.send(products)
-  } catch (error) {
-    next(error)
   }
 });
 

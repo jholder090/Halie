@@ -39,18 +39,26 @@ const AllProducts = () => {
     hiddenDiv.style.transform = 'translate(330px)'
   }
 
-  const addToUserCart = async (product) => {
-    userCart?.map(cartItem => {
-      if (cartItem.id === product.id) {
-       return dispatch(adjustQtyAsync(cartItem))
-      }
-    }
-    )
-    let quantity = 1;
-    let productId = product.id;
+  const addToUserCart = (product) => {
+    // userCart?.map(cartItem => {
+    //   if (cartItem.id === product.id) {
+    //    return dispatch(adjustQtyAsync(cartItem))
+    //   }
+    // }
+    // )
+    let userId = user.id;
     let cartId = userInfo.cart.id;
-    let price = product.price * quantity;
-    dispatch(addToUserCartAsync({quantity, price, productId, cartId}))
+    let cartQuantity = 1;
+    let cartPrice = product.price * cartQuantity;
+    let productId = product.id;
+    let productDescription = product.description;
+    let productImageUrl = product.imageUrl;
+    let productName = product.name;
+    let productQuantity = product.quantity;
+    let productPrice = product.price;
+
+    dispatch(addToUserCartAsync({userId, cartId, cartQuantity, cartPrice, productId, productDescription, productImageUrl, productName, productQuantity, productPrice}))
+    console.log("NEWUSERCART", userCart)
   }
 
   return (
