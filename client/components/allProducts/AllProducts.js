@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts, selectAllProducts } from '../slices/allProductsSlice';
+import { adjustQtyAsync, fetchUserInfoAsync, selectUserInfo } from "../slices/userCartSlice";
 import { addToCart } from "../slices/visitorCartSlice";
+// import {} from ''
 import './allProducts.css'
 
 
@@ -11,49 +13,48 @@ const AllProducts = () => {
   const products = useSelector(selectAllProducts);
   const [isHover, setHover] = useState(false);
   const user = useSelector(state => state.auth.me);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const userInfo = useSelector(selectUserInfo);
+  const userCart = userInfo.cart?.products
+  console.log("ALLPRODUCTS USER CART", userCart)
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-  }, []);
+    dispatch(fetchUserInfoAsync(user.id))
+  }, [user]);
 
-  // let buttons = document.getElementsByTagName('button')
-  // for (let i = 0; i < buttons.length; i++) {
-  //   buttons[i].onmouseover = function (event) {
-  //     handleHover(event);
-  //   }
-  //   buttons[i].onmouseout = function (event) {
-  //     handleHover(event);
-  //   }
-  // }
-  // const handleHover = (event) => {
-  //   setHover(!isHover);
-  //   console.log(event)
-  // }
   const handleButtonHover = (e) => {
     const product = products.filter((product) => {
       return product.id == e.target.id;
     });
     const hiddenDiv = document.querySelector(`.product${e.target.id}`);
-    // hiddenDiv.style.backgroundColor = 'green';
     hiddenDiv.style.opacity = 1;
-    // hiddenDiv.style.display = 'block';
     hiddenDiv.style.transform = 'translate(0, -8%)'
     hiddenDiv.style.pointerEvents = 'auto';
-    // console.log("STYLE!", hiddenDiv.style)
+
   }
 
   const handleButtonLeave = (e) => {
     const hiddenDiv = document.querySelector(`.product${e.target.id}`);
-    // hiddenDiv.style.backgroundColor = 'red';
     hiddenDiv.style.opacity = 0;
-    // hiddenDiv.style.display = 'hidden'
     hiddenDiv.style.transform = 'translate(0, 100%)'
     hiddenDiv.style.pointerEvents = 'none';
   }
 
+  // const addToUserCart = async (product) => {
+  //   userCart?.map(cartItem => {
+  //     if (cartItem.id === product.id) {
+  //       dispatch(adjustQtyAsync(cartItem))
+  //     }
+  //   }
+  //   )
+  //   let quantity = 1;
+  //   let id = product.id;
+  //   let
+  // }
+
   return (
     <>
-
       {/* <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
           <img className="rounded-t-lg" src="https://i.postimg.cc/9Mw08wks/lotion.png" alt="Blah" />
@@ -100,7 +101,12 @@ const AllProducts = () => {
                       Button
                     </button>
                   </div>
-                  <button id={product.id} onMouseEnter={(e) => handleButtonHover(e)} onMouseLeave={(e) => handleButtonLeave(e)} onClick={() => dispatch(addToCart(product))} href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button id={product.id} onMouseEnter={(e) => handleButtonHover(e)} onMouseLeave={(e) => handleButtonLeave(e)} onClick={
+                    isLoggedIn ?
+                    () => dispatch(addToUserCart(product)) :
+                    () => dispatch(addToCart(product))
+                  }
+                   href="#" className="allProducts-buyButton inline-flex items-center w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Buy now
                     <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                   </button>

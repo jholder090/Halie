@@ -10,9 +10,7 @@ const Navbar = () => {
   const user = useSelector((state) => state.auth.me);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userInfo = useSelector(selectUserInfo);
-  console.log("USER INFO", userInfo)
   const userCart = userInfo.cart?.products
-  console.log("USERCART", userCart)
 
   useEffect(() => {
     dispatch(fetchUserInfoAsync(user.id))
@@ -69,9 +67,6 @@ const Navbar = () => {
             <small>({getVisitorCartSize(visitorCart)})</small>
           </div>
         )}
-
-
-
         < button className='md:hidden'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
