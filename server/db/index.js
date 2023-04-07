@@ -36,6 +36,9 @@ Product.belongsToMany(Cart, {
   through: CartProduct
 });
 
+Product.hasMany(CartProduct)
+CartProduct.belongsTo(Product)
+
 Order.belongsToMany(Product, {
   // as: "orderProducts",
   through: 'order_products'
