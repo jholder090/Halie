@@ -6,35 +6,34 @@ const User = require("./models/User");
 const Cart = require('./models/Cart');
 const Product = require('./models/Product');
 const Order = require('./models/Order');
-const CartProducts = require('./models/CartProducts');
-const OrderProducts = require('./models/OrderProducts');
+const CartProduct = require('./models/CartProduct');
 
 // Associations
 User.hasOne(Cart, {
   // as: "userCart",
-  foreignKey: "userId"
+  // foreignKey: "userId"
 });
 Cart.belongsTo(User, {
   // as: "userCart",
-  foreignKey: "userId"
+  // foreignKey: "userId"
 });
 
 User.hasMany(Order, {
   // as: "userOrders",
-  foreignKey: "userId"
+  // foreignKey: "userId"
 });
 Order.belongsTo(User, {
   // as: "userOrders",
-  foreignKey: "userId"
+  // foreignKey: "userId"
 });
 
 Cart.belongsToMany(Product, {
   // as: "cartProducts",
-  through: 'cart_products'
+  through: CartProduct
 });
 Product.belongsToMany(Cart, {
   // as: "cartProducts",
-  through: 'cart_products'
+  through: CartProduct
 });
 
 Order.belongsToMany(Product, {
@@ -57,7 +56,6 @@ module.exports = {
     Cart,
     Product,
     Order,
-    CartProducts,
-    OrderProducts
+    CartProduct,
   },
 };

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  models: { User, Cart, Order, Product },
+  models: { User, Cart, Order, Product, CartProduct },
 } = require("../db");
 module.exports = router;
 
@@ -39,18 +39,17 @@ router.get("/customers", async (req, res, next) => {
       },
       include: [{
         model: Cart,
-        as: "userCart",
+        // as: "userCart",
         include: {
           model: Product,
-          as: "cartProducts"
         }
       },
       {
         model: Order,
-        as: "userOrders",
+        // as: "userOrders",
         include: {
           model: Product,
-          as: "orderProducts"
+          // as: "orderProducts"
         }
       }]
     });
@@ -92,30 +91,30 @@ router.get("/customer/:id", async (req, res, next) => {
 });
 
 // CUSTOMER POST PRODUCT TO CART /api/users/customer/:id
-router.post('/customer/:id', async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.params.id, {
-      where: {
-        role: "CUST"
-      },
-      include: {
-        model: Cart,
-        // as: "userCart",
-        include: {
-          model: Product,
-          // as: "cartProducts"
-        }
-      },
-    })
-    const products = user.cart.products
-    console.log("OLD API PRODUCTS", products)
-    await products.push(req.body);
-    console.log("NEW API PRODUCTS", products)
-    res.send(products)
-  } catch (error) {
-    next(error)
-  }
-});
+// router.post('/customer/:id', async (req, res, next) => {
+//   try {
+//     const user = await User.findByPk(req.params.id, {
+//       where: {
+//         role: "CUST"
+//       },
+//       include: {
+//         model: Cart,
+//         // as: "userCart",
+//         include: {
+//           model: Product,
+//           // as: "cartProducts"
+//         }
+//       },
+//     })
+//     const products = user.cart.products
+//     console.log("OLD API PRODUCTS", products)
+//     await products.push(req.body);
+//     console.log("NEW API PRODUCTS", products)
+//     res.send(products)
+//   } catch (error) {
+//     next(error)
+//   }
+// });
 
 // ADMIN GET /api/users/admin
 router.get("/admin", async (req, res, next) => {

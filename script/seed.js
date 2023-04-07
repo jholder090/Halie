@@ -1,6 +1,6 @@
 const {
   db,
-  models: { User, Cart, Product, Order, CartProducts, OrderProducts },
+  models: { User, Cart, Product, Order, CartProduct },
 } = require("../server/db");
 
 
@@ -19,6 +19,7 @@ async function seed() {
   console.log("CART MAGIC METHODS: ", Object.keys(Cart.prototype));
   console.log("PRODUCT MAGIC METHODS: ", Object.keys(Product.prototype));
   console.log("ORDER MAGIC METHODS: ", Object.keys(Order.prototype));
+  console.log("CARTPRODUCT MAGIC METHODS", Object.keys(CartProduct.prototype));
 
   // **********************************
 
@@ -52,15 +53,14 @@ async function seed() {
 
   const joeCart = await Cart.create({
     userId: 2,
-    total: 125.88
   });
 
   const desCart = await Cart.create({
     userId: 3,
-    total: 127.87
   })
 
   console.log(`carts seeded successfully`);
+
 
   // ******************************************
 
@@ -263,59 +263,67 @@ async function seed() {
     }
   ]
 
-  await Promise.all(cartProducts.map(cartProduct => CartProducts.create(cartProduct)));
+  await Promise.all(cartProducts.map(cartProduct => CartProduct.create(cartProduct)));
 
   console.log(`cartProducts seeded successfully`);
 
   // **************************************
 
-  const orderProducts = [
-    {
-      orderId: 1,
-      productId: 1,
-      quantity: 11,
-      price: products[0].price * 11
-    },
-    {
-      orderId: 1,
-      productId: 3,
-      quantity: 4,
-      price: products[2].price * 4
-    },
-    {
-      orderId: 2,
-      productId: 1,
-      quantity: 9,
-      price: products[0].price * 9
-    },
-    {
-      orderId: 2,
-      productId: 2,
-      quantity: 3,
-      price: products[1].price * 3
-    },
-    {
-      orderId: 2,
-      productId: 3,
-      quantity: 1,
-      price: products[2].price
-    },
-    {orderId: 3,
-      productId: 2,
-      quantity: 4,
-      price: products[1].price * 4
-    },
-    {
-      orderId: 3,
-      productId: 3,
-      quantity: 6,
-      price: products[2].price * 6
-    },
-  ]
+  await joeCart.update({total: cartProducts[0].price + cartProducts[1].price + cartProducts[2].price})
 
-  await Promise.all(orderProducts.map(orderProduct => OrderProducts.create(orderProduct)));
+  await desCart.update({total: cartProducts[3].price + cartProducts[4].price + cartProducts[5].price})
 
-  console.log(`orderProducts seeded successfully`);
+console.log("Carts updated successfully")
+
+  // **************************************
+
+  // const orderProducts = [
+  //   {
+  //     orderId: 1,
+  //     productId: 1,
+  //     quantity: 11,
+  //     price: products[0].price * 11
+  //   },
+  //   {
+  //     orderId: 1,
+  //     productId: 3,
+  //     quantity: 4,
+  //     price: products[2].price * 4
+  //   },
+  //   {
+  //     orderId: 2,
+  //     productId: 1,
+  //     quantity: 9,
+  //     price: products[0].price * 9
+  //   },
+  //   {
+  //     orderId: 2,
+  //     productId: 2,
+  //     quantity: 3,
+  //     price: products[1].price * 3
+  //   },
+  //   {
+  //     orderId: 2,
+  //     productId: 3,
+  //     quantity: 1,
+  //     price: products[2].price
+  //   },
+  //   {orderId: 3,
+  //     productId: 2,
+  //     quantity: 4,
+  //     price: products[1].price * 4
+  //   },
+  //   {
+  //     orderId: 3,
+  //     productId: 3,
+  //     quantity: 6,
+  //     price: products[2].price * 6
+  //   },
+  // ]
+
+  // await Promise.all(orderProducts.map(orderProduct => OrderProducts.create(orderProduct)));
+
+  // console.log(`orderProducts seeded successfully`);
 }
 
 /*
