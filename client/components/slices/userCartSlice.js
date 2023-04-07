@@ -1,9 +1,9 @@
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 import axios from "axios";
 
-export const fetchUserInfoAsync = createAsyncThunk("userCart/fetchAll", async (id) => {
+export const fetchUserCartAsync = createAsyncThunk("userCart/fetchAll", async (id) => {
   try {
-    const { data } = await axios.get(`http://localhost:5000/api/users/customer/${id}`);
+    const { data } = await axios.get(`http://localhost:5000/api/cart/${id}`);
     return data;
   } catch (err) {
     console.log(err);
@@ -12,20 +12,19 @@ export const fetchUserInfoAsync = createAsyncThunk("userCart/fetchAll", async (i
 
 export const addToUserCartAsync = createAsyncThunk(
   "cart/add",
-  async ({ userId, cartId, cartQuantity, cartPrice, productId, productDescription, productImageUrl, productName, productQuantity, productPrice}) => {
+  async ({ cartId, productId, quantity, price}) => {
     try {
-      await axios.post(`http://localhost:5000/api/users/customer/${userId}`, {
-         id: productId,
-         name: productName,
-         description: productDescription,
-         price: productPrice,
-        quantity: productQuantity,
-        imageUrl: productImageUrl,
+      await axios.post(`http://localhost:5000/api/cart/${cartId}`, {
+        cartId,
+        productId,
+        quantity,
+        price
       });
-// const { data } = await axios.get(
-//   `http://localhost:5000/api/users/customer/${userId}`
-// );
-// return data;
+const { data } = await axios.get(
+  `http://localhost:5000/api/cart/${cartId}`
+);
+console.log("NEW CART DATA", data)
+return data;
     } catch (err) {
       console.log(err);
     }
@@ -72,7 +71,7 @@ export const userCartSlice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchUserInfoAsync.fulfilled, (state, action) => {
+    builder.addCase(fetchUserCartAsync.fulfilled, (state, action) => {
       return action.payload;
     });
     // builder.addCase(addToCartAsync.fulfilled, (state, action) => {
@@ -87,5 +86,5 @@ export const userCartSlice = createSlice({
   },
 });
 
-export const selectUserInfo = (state) => state.userCart;
+export const selectUserCart = (state) => state.userCart;
 export default userCartSlice.reducer;

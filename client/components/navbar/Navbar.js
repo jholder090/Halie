@@ -9,12 +9,12 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.me);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const userInfo = useSelector(selectUserInfo);
-  const userCart = userInfo.cart?.products
+  // const userInfo = useSelector(selectUserInfo);
+  // const userCart = userInfo.cart?.products
 
-  useEffect(() => {
-    dispatch(fetchUserInfoAsync(user.id))
-  }, [user]);
+  // useEffect(() => {
+  //   dispatch(fetchUserInfoAsync(user.id))
+  // }, [user]);
 
   useEffect(() => {
     const handleNavbarHeight = () => {
@@ -60,7 +60,7 @@ const Navbar = () => {
       <nav>
         {isLoggedIn ? (
           <div>
-            <small>({getUserCartSize(userCart)})</small>
+            {/* <small>({getUserCartSize(userCart)})</small> */}
           </div>
         ) : (
           <div>

@@ -9,36 +9,23 @@ module.exports = router;
 router.get('/:id', async (req, res, next) => {
   try {
     const cart = await CartProduct.findAll({
+      // b/c Admin is first user in DB, CartId is one integer greater than userId, which is req.params.id here
       where: {cartId: req.params.id},
       include: { model: Product}
     });
+    console.log("CART SLICE GET", cart)
     res.json(cart)
   } catch (error) {
     next (error)
   }
 })
 
-// CUSTOMER POST PRODUCT TO CART /api/users/customer/:id
-router.post('/customer/:id', async (req, res, next) => {
+// CUSTOMER POST PRODUCT TO CART /api/cart/:id
+router.post('/:id', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.id, {
-      where: {
-        role: "CUST"
-      },
-      include: {
-        model: Cart,
-        // as: "userCart",
-        include: {
-          model: Product,
-          // as: "cartProducts"
-        }
-      },
-    })
-    const products = user.cart.products
-    console.log("OLD API PRODUCTS", products)
-    await products.push(req.body);
-    console.log("NEW API PRODUCTS", products)
-    res.send(products)
+   const cart = await CartProduct.create(req.body);
+   console.log("API CART", cart)
+   res.send(cart);
   } catch (error) {
     next(error)
   }

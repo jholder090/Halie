@@ -23,14 +23,6 @@ async function seed() {
 
   // **********************************
 
-  const halie = await User.create({
-    role: "ADMIN",
-    firstName: "Halie",
-    lastName: "Carley",
-    email: "halie@gmail.com",
-    password: "123"
-  })
-
   const joe = await User.create({
     role: "CUST",
     firstName: "Joe",
@@ -47,16 +39,24 @@ async function seed() {
     password: "123"
   })
 
+  const halie = await User.create({
+    role: "ADMIN",
+    firstName: "Halie",
+    lastName: "Carley",
+    email: "halie@gmail.com",
+    password: "123"
+  })
+
   console.log(`users seeded successfully`);
 
   // ******************************************
 
   const joeCart = await Cart.create({
-    userId: 2,
+    userId: 1,
   });
 
   const desCart = await Cart.create({
-    userId: 3,
+    userId: 2,
   })
 
   console.log(`carts seeded successfully`);

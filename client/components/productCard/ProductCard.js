@@ -1,10 +1,35 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToUserCartAsync } from "../slices/userCartSlice";
 
-const ProductCard = ({ product, handleButtonHover, handleButtonLeave, addToUserCart }) => {
+const ProductCard = ({ user, product, userCart }) => {
+  const dispatch = useDispatch();
   const [isHover, setHover] = useState(false);
+  console.log("COMPONENT CART", userCart)
 
   const handleHover = () => {
     setHover(!isHover);
+  }
+
+  const addToUserCart = (product) => {
+    // userCart?.map(cartItem => {
+    //   if (cartItem.id === product.id) {
+    //    return dispatch(adjustQtyAsync(cartItem))
+    //   }
+    // }
+    // )
+    // let userId = user.id;
+    let cartId = user.id;
+    let quantity = 1;
+    let productId = product.id;
+    let price = product.price * quantity;
+    // let productDescription = product.description;
+    // let productImageUrl = product.imageUrl;
+    // let productName = product.name;
+    // let productQuantity = product.quantity;
+    // let productPrice = product.price;
+
+    dispatch(addToUserCartAsync({ cartId, productId, quantity, price }))
   }
 
   return (
