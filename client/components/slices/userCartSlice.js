@@ -23,7 +23,7 @@ export const addToUserCartAsync = createAsyncThunk(
 const { data } = await axios.get(
   `http://localhost:5000/api/cart/${cartId}`
 );
-console.log("NEW CART DATA", data)
+console.log("SLICE DATA", data)
 return data;
     } catch (err) {
       console.log(err);

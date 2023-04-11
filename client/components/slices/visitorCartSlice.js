@@ -6,7 +6,7 @@ const visitorCartSlice = createSlice({
   name: "visitorCart",
   initialState: local,
   reducers: {
-    addToCart(state, action) {
+    addToVisitorCart(state, action) {
       const itemInCart = state.find((item) => item.id === action.payload.id);
       if (itemInCart) {
         itemInCart.quantity++;
@@ -38,5 +38,5 @@ const visitorCartSlice = createSlice({
 });
 export default visitorCartSlice.reducer;
 
-export const { addToCart } =
+export const { addToVisitorCart } =
   visitorCartSlice.actions;

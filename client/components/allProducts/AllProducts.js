@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts, selectAllProducts } from '../slices/allProductsSlice';
 import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
-import { addToCart } from "../slices/visitorCartSlice";
-// import {} from ''
 import { ProductCard } from '../index'
 import './allProducts.css'
 
@@ -14,6 +12,9 @@ const AllProducts = () => {
   const products = useSelector(selectAllProducts);
   const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart)
+  let visitorCart = useSelector(state => state.visitorCart)
+  console.log("USER CART", userCart)
+  console.log("VISITOR CART", visitorCart)
 
   useEffect(() => {
     dispatch(fetchAllProducts());

@@ -3,18 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserInfoAsync, selectUserInfo } from "../slices/userCartSlice";
 
 const Navbar = () => {
-  // const [scrollTop, setScrollTop] = useState(0);
-  // const [navbarWidth, setNavbarWidth] = useState('36')
   const [isShrunk, setShrunk] = useState(false);
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.me);
+  // const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.me);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  // const userInfo = useSelector(selectUserInfo);
-  // const userCart = userInfo.cart?.products
-
-  // useEffect(() => {
-  //   dispatch(fetchUserInfoAsync(user.id))
-  // }, [user]);
+  const userCart = useSelector(state => state.userCart)
+  console.log("NAVBAR USERCART", userCart);
 
   useEffect(() => {
     const handleNavbarHeight = () => {
@@ -45,7 +39,7 @@ const Navbar = () => {
   const getUserCartSize = (userCart) => {
     let size = 0;
     userCart?.map(cartItem => {
-      size += cartItem.cart_products.quantity;
+      size += cartItem.quantity;
     }
     )
     return size
@@ -60,7 +54,7 @@ const Navbar = () => {
       <nav>
         {isLoggedIn ? (
           <div>
-            {/* <small>({getUserCartSize(userCart)})</small> */}
+            <small>({getUserCartSize(userCart)})</small>
           </div>
         ) : (
           <div>
