@@ -50,15 +50,22 @@ export const adjustQtyAsync = createAsyncThunk(
   "cart/increase",
   async (cartItem) => {
     try {
-      const { id, quantity, cartId } = cartItem;
-      const updatedCartItemQty = { id, quantity, cartId };
+      const { id, cartId, productId, quantity } = cartItem;
+      // console.log("ID", id, "CARTID", cartId, "PRODUCTID", productId, "QTY", quantity)
+      // const updatedCartItemQty = { id, quantity, cartId };
       await axios.put(
-        `http://localhost:3000/api/cart/${cartId}/${id}`, //if issue come back here
-        updatedCartItemQty
+        `http://localhost:5000/api/cart/${id}`, //if issue come back here
+        {
+          // id,
+          // cartId,
+          // productId,
+          quantity
+        }
       );
       const { data } = await axios.get(
-        `http://localhost:3000/api/cart/${cartId}`
+        `http://localhost:5000/api/cart/${cartId}`
       );
+      console.log("ADJUST QTY DATA FROM SLICE", data)
       return data;
     } catch (err) {
       console.log(err);

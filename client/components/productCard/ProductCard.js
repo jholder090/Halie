@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToUserCartAsync } from "../slices/userCartSlice";
+import { addToUserCartAsync, adjustQtyAsync } from "../slices/userCartSlice";
 import { addToVisitorCart } from "../slices/visitorCartSlice";
 
 const ProductCard = ({ user, product, userCart }) => {
@@ -13,23 +13,18 @@ const ProductCard = ({ user, product, userCart }) => {
   }
 
   const addToUserCart = (product) => {
-    // userCart?.map(cartItem => {
-    //   if (cartItem.id === product.id) {
-    //    return dispatch(adjustQtyAsync(cartItem))
-    //   }
-    // }
-    // )
-    // let userId = user.id;
+    for(let i=0; i< userCart.length; i++){
+      let item = {...userCart[i]}
+      if (item.productId === product.id) {
+        item.quantity++;
+        return dispatch(adjustQtyAsync(item))
+      }
+    }
+
     let cartId = user.id;
     let quantity = 1;
     let productId = product.id;
     let price = product.price * quantity;
-    // let productDescription = product.description;
-    // let productImageUrl = product.imageUrl;
-    // let productName = product.name;
-    // let productQuantity = product.quantity;
-    // let productPrice = product.price;
-
     dispatch(addToUserCartAsync({ cartId, productId, quantity, price }))
   }
 

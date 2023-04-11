@@ -30,3 +30,13 @@ router.post('/:id', async (req, res, next) => {
     next(error)
   }
 });
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const cartitem = await CartProduct.findByPk(req.params.id);
+    const updatedCartItem = await cartitem.update(req.body)
+    res.send(updatedCartItem);
+  } catch (error) {
+    next(error)
+  }
+});
