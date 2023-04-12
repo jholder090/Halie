@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToUserCartAsync, adjustQtyAsync } from "../slices/userCartSlice";
 import { addToVisitorCart } from "../slices/visitorCartSlice";
 
-const ProductCard = ({ user, product, userCart }) => {
+const ProductCard = ({ user, product, userCart, added, setAdded }) => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const [isHover, setHover] = useState(false);
@@ -13,6 +13,7 @@ const ProductCard = ({ user, product, userCart }) => {
   }
 
   const addToUserCart = (product) => {
+    setAdded(true);
     for(let i=0; i< userCart.length; i++){
       let item = {...userCart[i]}
       if (item.productId === product.id) {
@@ -20,7 +21,6 @@ const ProductCard = ({ user, product, userCart }) => {
         return dispatch(adjustQtyAsync(item))
       }
     }
-
     let cartId = user.id;
     let quantity = 1;
     let productId = product.id;

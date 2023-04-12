@@ -8,13 +8,15 @@ import './allProducts.css'
 
 
 const AllProducts = () => {
+  const [added, setAdded] = useState(false);
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
   const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart)
   let visitorCart = useSelector(state => state.visitorCart)
-  console.log("USER CART", userCart)
-  console.log("VISITOR CART", visitorCart)
+  // console.log("USER CART", userCart)
+  // console.log("VISITOR CART", visitorCart)
+  // console.log("ADDED?", added)
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -22,14 +24,15 @@ const AllProducts = () => {
 
   useEffect(() => {
     dispatch(fetchUserCartAsync(user.id))
-  }, [user])
+    setAdded(false);
+  }, [user, added])
 
   return (
     <>
       <div className='allProducts h-full flex justify-center flex-wrap'>
         {products.map(product => {
           return (
-            <ProductCard key={product.id} user={user} product={product} userCart={userCart}
+            <ProductCard key={product.id} user={user} product={product} userCart={userCart} added={added} setAdded={setAdded}
               />
           )
         })}

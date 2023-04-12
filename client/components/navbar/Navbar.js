@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserInfoAsync, selectUserInfo } from "../slices/userCartSlice";
+import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
 
 const Navbar = () => {
   const [isShrunk, setShrunk] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const user = useSelector(state => state.auth.me);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userCart = useSelector(state => state.userCart)
-  console.log("NAVBAR USERCART", userCart);
+  // console.log("NAVBAR USERCART", userCart);
+
+  
 
   useEffect(() => {
     const handleNavbarHeight = () => {
