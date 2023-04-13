@@ -1,28 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToUserCartAsync, adjustQtyAsync } from "../slices/userCartSlice";
 import { addToVisitorCart } from "../slices/visitorCartSlice";
 
-const ProductCard = ({ user, product, userCart, added, setAdded }) => {
+const ProductCard = ({ user, product, userCart, setAdded }) => {
+  const [isHover, setHover] = useState(false);
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const [isHover, setHover] = useState(false);
+
 
   const handleHover = () => {
     setHover(!isHover);
   }
 
+  const adjustQty = (e) => {
+    if (e.target.id == 'decrease' && qty >= 2) {
+      setQty(qty - 1)
+    } else if (e.target.id == 'increase') {
+      setQty(qty + 1)
+    }
+  }
+
   const addToUserCart = (product) => {
     setAdded(true);
-    for(let i=0; i< userCart.length; i++){
-      let item = {...userCart[i]}
+    for (let i = 0; i < userCart.length; i++) {
+      let item = { ...userCart[i] }
       if (item.productId === product.id) {
-        item.quantity++;
+        item.quantity += qty;
+        item.price = item.product.price * item.quantity
         return dispatch(adjustQtyAsync(item))
       }
     }
     let cartId = user.id;
-    let quantity = 1;
+    let quantity = qty;
     let productId = product.id;
     let price = product.price * quantity;
     dispatch(addToUserCartAsync({ cartId, productId, quantity, price }))
@@ -50,11 +61,18 @@ const ProductCard = ({ user, product, userCart, added, setAdded }) => {
       {isLoggedIn
         ?
         <div id={product.id} onMouseEnter={handleHover} onMouseLeave={handleHover}
-          onClick={() => addToUserCart(product)}
-          href="#" className="allProducts-buyButton overflow-hidden w-85 px-3 py-2 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Buy now
+          href="#" className="allProducts-buyButton overflow-hidden w-85 h-12 z-50 text-sm font-medium text-center text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-between" >
+          <div className="div1 bg-slate-500" onClick={() => addToUserCart(product)}>Add to Cart</div>
           {/* <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg> */}
-          <button className={isHover ? `h-full w-full transition-all duration-700` : `h-full w-full transition-all duration-700 translate-x-full`}>HELLO!</button>
+          <div className={isHover ? 'bg-slate-500 w-36 flex justify-around items-center transition-all duration-700'
+          :
+          'bg-slate-500 w-36 flex justify-around items-center transition-all duration-700 translate-x-full'}>
+            <button id='decrease'className='bg-lime-600 h-8 w-8'
+            onClick={(e) => adjustQty(e)}>-</button>
+            <div>{qty}</div>
+            <button id='increase'className='bg-lime-600 h-8 w-8'
+            onClick={(e) => adjustQty(e)}>+</button>
+          </div>
         </div>
         :
         <div id={product.id} onMouseEnter={handleHover} onMouseLeave={handleHover}

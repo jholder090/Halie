@@ -13,7 +13,7 @@ router.get('/:id', async (req, res, next) => {
       where: {cartId: req.params.id},
       include: { model: Product}
     });
-    console.log("CART SLICE GET", cart)
+    // console.log("CART SLICE GET", cart)
     res.json(cart)
   } catch (error) {
     next (error)

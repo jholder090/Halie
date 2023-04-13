@@ -4,13 +4,10 @@ import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
 
 const Navbar = () => {
   const [isShrunk, setShrunk] = useState(false);
-  const dispatch = useDispatch();
   const user = useSelector(state => state.auth.me);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const userCart = useSelector(state => state.userCart)
-  // console.log("NAVBAR USERCART", userCart);
-
-  
+  const userCart = useSelector(state => state.userCart);
+  const visitorCart = useSelector(state => state.visitorCart);
 
   useEffect(() => {
     const handleNavbarHeight = () => {
@@ -28,16 +25,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleNavbarHeight);
   }, [])
 
-  const visitorCart = useSelector(state => state.visitorCart)
-
-  const getVisitorCartSize = (cart) => {
-    let size = 0;
-    for (let product of cart) {
-      size += product.quantity;
-    }
-    return size;
-  }
-
   const getUserCartSize = (userCart) => {
     let size = 0;
     userCart?.map(cartItem => {
@@ -45,6 +32,14 @@ const Navbar = () => {
     }
     )
     return size
+  }
+
+  const getVisitorCartSize = (cart) => {
+    let size = 0;
+    for (let product of cart) {
+      size += product.quantity;
+    }
+    return size;
   }
 
   return (

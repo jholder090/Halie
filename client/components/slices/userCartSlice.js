@@ -23,7 +23,7 @@ export const addToUserCartAsync = createAsyncThunk(
 const { data } = await axios.get(
   `http://localhost:5000/api/cart/${cartId}`
 );
-console.log("SLICE DATA", data)
+// console.log("SLICE DATA", data)
 return data;
     } catch (err) {
       console.log(err);
@@ -50,7 +50,7 @@ export const adjustQtyAsync = createAsyncThunk(
   "cart/increase",
   async (cartItem) => {
     try {
-      const { id, cartId, productId, quantity } = cartItem;
+      const { id, cartId, productId, quantity, price } = cartItem;
       // console.log("ID", id, "CARTID", cartId, "PRODUCTID", productId, "QTY", quantity)
       // const updatedCartItemQty = { id, quantity, cartId };
       await axios.put(
@@ -59,13 +59,14 @@ export const adjustQtyAsync = createAsyncThunk(
           // id,
           // cartId,
           // productId,
-          quantity
+          quantity,
+          price
         }
       );
       const { data } = await axios.get(
         `http://localhost:5000/api/cart/${cartId}`
       );
-      console.log("ADJUST QTY DATA FROM SLICE", data)
+      // console.log("ADJUST QTY DATA FROM SLICE", data)
       return data;
     } catch (err) {
       console.log(err);
@@ -81,12 +82,12 @@ export const userCartSlice = createSlice({
     builder.addCase(fetchUserCartAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    // builder.addCase(addToCartAsync.fulfilled, (state, action) => {
-    //   return action.payload;
-    // });
-    // builder.addCase(adjustQtyAsync.fulfilled, (state, action) => {
-    //   return action.payload;
-    // });
+    builder.addCase(addToUserCartAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
+    builder.addCase(adjustQtyAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
     // builder.addCase(removeCartItemAsync.fulfilled, (state, action) => {
     //   return action.payload;
     // });

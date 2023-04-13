@@ -13,10 +13,6 @@ const AllProducts = () => {
   const products = useSelector(selectAllProducts);
   const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart)
-  let visitorCart = useSelector(state => state.visitorCart)
-  // console.log("USER CART", userCart)
-  // console.log("VISITOR CART", visitorCart)
-  // console.log("ADDED?", added)
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -24,15 +20,18 @@ const AllProducts = () => {
 
   useEffect(() => {
     dispatch(fetchUserCartAsync(user.id))
-    setAdded(false);
-  }, [user, added])
+  }, [user])
+
+  useEffect(() => {
+    setAdded(false)
+  }, [added])
 
   return (
     <>
       <div className='allProducts h-full flex justify-center flex-wrap'>
         {products.map(product => {
           return (
-            <ProductCard key={product.id} user={user} product={product} userCart={userCart} added={added} setAdded={setAdded}
+            <ProductCard key={product.id} user={user} product={product} userCart={userCart} setAdded={setAdded}
               />
           )
         })}
