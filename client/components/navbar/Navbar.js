@@ -43,10 +43,10 @@ const Navbar = () => {
   }
 
   return (
-    <div className={isShrunk ? 'navbar h-20 z-50 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out' :
-      'navbar h-36 z-50 sticky top-0 flex justify-between items-center px-4 bg-slate-600 transition-height duration-500 ease-in-out'
+    <div className={isShrunk ? 'navbar h-20 z-50 sticky top-0 flex justify-between items-center px-4 transition-height duration-500 ease-in-out' :
+      'navbar h-44 z-50 bg-halie-light sticky top-0 flex justify-between items-center px-4 transition-height duration-500 ease-in-out'
     }>
-      <img src='https://i.postimg.cc/9Mw08wks/lotion.png' alt='Halie Logo' className='h-12' />
+      <img src='https://i.postimg.cc/nr5sD75K/Temple-Rose-Banner.png' alt='Halie Logo' className='h-full w-6/12' />
       <small>Shopping as: <strong>{user.firstName ? user.firstName : "Guest"}</strong></small>
       <nav>
         {isLoggedIn ? (

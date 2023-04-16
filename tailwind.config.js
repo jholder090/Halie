@@ -13,7 +13,12 @@ module.exports = {
       },
       transitionProperty: {
         'height': 'height',
-      }
+      },
+      colors: {
+        'halie-dark': '#9e544c',
+        'halie-med' : '#d89e94',
+        'halie-light': '#ecb8ac',
+      },
     }
   },
   variants: {},
