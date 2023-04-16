@@ -4,6 +4,9 @@ module.exports = {
   darkMode: true, // or 'media' or 'class'
   theme: {
     extend: {
+      flex: {
+        '25': '1 1 20%'
+      },
       spacing: {
         '85': '360px',
         '100': '620px'
