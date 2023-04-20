@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
+import FullNavbar from "./FullNavbar";
+import ShrunkNavbar from "./ShrunkNavbar";
 
 const Navbar = () => {
   const [isShrunk, setShrunk] = useState(false);
@@ -43,10 +45,27 @@ const Navbar = () => {
   }
 
   return (
-    <div className={isShrunk ? 'navbar h-20 z-50 sticky top-0 flex justify-between items-center px-4 transition-height duration-500 ease-in-out' :
-      'navbar h-44 z-50 bg-halie-light sticky top-0 flex justify-between items-center px-4 transition-height duration-500 ease-in-out'
+    <div className={isShrunk ? 'navbar h-28 z-50 sticky top-0 flex justify-between items-center transition-height duration-500 ease-in-out' :
+      'navbar h-52 z-50 sticky top-0 flex justify-between items-center transition-height duration-500 ease-in-out'
     }>
-      <img src='https://i.postimg.cc/nr5sD75K/Temple-Rose-Banner.png' alt='Halie Logo' className='h-full w-6/12' />
+      {isShrunk ?
+        <ShrunkNavbar
+          user={user}
+          isLoggedIn={isLoggedIn}
+          userCart={userCart}
+          visitorCart={visitorCart}
+          getVisitorCartSize={getVisitorCartSize} getUserCartSize={getUserCartSize} />
+        :
+        <FullNavbar
+          user={user}
+          isLoggedIn={isLoggedIn}
+          userCart={userCart}
+          visitorCart={visitorCart}
+          getVisitorCartSize={getVisitorCartSize} getUserCartSize={getUserCartSize} />
+      }
+
+      {/* <img src='https://i.postimg.cc/q76pMWNw/Temple-Rose-Left-Rose-Joe.png' alt='Halie Logo' className='h-full w-1/5' />
+      <img src='https://i.postimg.cc/Jn7HF160/Temple-Rose-Title.png' alt='Halie Logo' className='h-full w-2/5' />
       <small>Shopping as: <strong>{user.firstName ? user.firstName : "Guest"}</strong></small>
       <nav>
         {isLoggedIn ? (
@@ -75,6 +94,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
+      <img src='https://i.postimg.cc/PxqzwzkS/Temple-Rose-Right-Rose.png' alt='Halie Logo' className='h-full w-1/5' /> */}
     </div >
   )
 }
