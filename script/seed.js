@@ -70,126 +70,126 @@ async function seed() {
       description: "Great for moistening dried and cracking skin.",
       price: 12.99,
       quantity: 50,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Eye cream",
       description: "Get rid of those bags under your eyes.",
       price: 9.99,
       quantity: 30,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Vitamin E Oil",
       description: "Heals scars and blemishes.",
       price: 7.99,
       quantity: 25,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Mascara",
       description: "Arrr matey!",
       price: 13.99,
       quantity: 49,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Lip balm",
       description: "Smooches!",
       price: 5.99,
       quantity: 30,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Facial blush",
       description: "Put some color on those cheeks!",
       price: 22.99,
       quantity: 20,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Hair conditioner",
       description: "Silky smooth hair for your delicate sensibilities.",
       price: 14.99,
       quantity: 2,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Shampoo",
       description: "Clean the hair up there.",
       price: 7.99,
       quantity: 34,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Jojoba Oil",
       description: "Straight from the jungles of Africa.",
       price: 23.99,
       quantity: 23,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Avocado Oil",
       description: "Wait, that's not a skin care product, is it?",
       price: 14.99,
       quantity: 26,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Eye liner",
       description: "Or is it...guy liner??",
       price: 11.99,
       quantity: 13,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Some other kind of oil",
       description: "Better oily than late!",
       price: 2.99,
       quantity: 15,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Lip stick",
       description: "Color up those smackers!",
       price: 14.99,
       quantity: 66,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Eyelash stuff",
       description: "Great for batting those peepers at your favorite person.",
       price: 11.99,
       quantity: 30,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Breakout reducer",
       description: "Quick, hide!",
       price: 7.99,
       quantity: 25,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Acne cream",
       description: "You're a teenager - it's okay.",
       price: 43.99,
       quantity: 21,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Facial scrub",
       description: "Gets rid of all those nasty blackheads.",
       price: 9.99,
       quantity: 43,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     },
     {
       name: "Eyebrow pencil",
       description: "So, you're going for that Cleopatra look?",
       price: 10.99,
       quantity: 20,
-      imageUrl: 'https://i.postimg.cc/9Mw08wks/lotion.png'
+      imageUrl: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png'
     }
   ]
 

@@ -41,10 +41,10 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
   }
 
   return (
-    <div onMouseEnter={handleHover} onMouseLeave={handleHover} className={`allProducts-productContainer min-h-fit max-w-sm  m-5 flex-col items-center flex-25 border-gray-200 rounded-sm shadow  dark:border-gray-700`} key={product.id}>
+    <div onMouseEnter={handleHover} onMouseLeave={handleHover} className={`allProducts-productContainer min-h-fit max-w-sm  mx-4 my-6 flex-col items-center flex-25 border-gray-200 rounded-sm shadow  dark:border-gray-700`} key={product.id}>
       <div className='allProducts-productImageUrl flex justify-center'>
         <a href="#" className='w-full flex justify-center max-h-72'>
-          <img className={isHover ? "rounded-t-lg transition-all duration-700 scale-100" : "rounded-t-lg transition-all duration-700 scale-75"} src="https://i.postimg.cc/9Mw08wks/lotion.png" alt="Blah" />
+          <img className={isHover ? "rounded-t-lg transition-all duration-700 scale-100" : "rounded-t-lg transition-all duration-700 scale-75"} src={product.imageUrl} alt="Blah" />
         </a>
       </div>
       <div className="px-5">
@@ -60,19 +60,19 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
       {isLoggedIn
         ?
         <div id={product.id}
-          href="#" className="allProducts-buyButton overflow-hidden  h-12 z-50 text-sm font-medium text-center text-white bg-halie-light  hover:bg-halie-med focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex justify-between" >
-          <div className="div1 w-4/12 flex items-center justify-center bg-halie-dark" onClick={() => addToUserCart(product)}>
+          href="#" className="allProducts-buyButton overflow-hidden  h-12 z-50 text-sm font-medium text-center text-white bg-halie-light focus:ring-4 focus:outline-none flex justify-between" >
+          <div className="div1 m-1 w-4/12 flex items-center justify-around rounded-full bg-halie-dark hover:bg-halie-hover hover:cursor-pointer" onClick={() => addToUserCart(product)}>
             <ShoppingCartSimple size={28}/>
-            <div>{product.price * qty}</div>
+            <div>${product.price * qty}</div>
             </div>
           {/* <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" ><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg> */}
-          <div className={isHover ? 'bg-slate-500 w-36 flex justify-around items-center transition-all duration-700'
+          <div className={isHover ? 'w-36 flex justify-around items-center transition-all duration-700'
             :
-            'bg-slate-500 w-36 flex justify-around items-center transition-all duration-700 translate-x-full'}>
-            <button id='decrease' className='bg-lime-600 h-8 w-8'
+            'w-36 flex justify-around items-center transition-all duration-700 translate-x-full'}>
+            <button id='decrease' className='bg-halie-dark hover:bg-halie-hover text-white font-bold py-2 px-5 rounded-full'
               onClick={(e) => adjustQty(e)}>-</button>
             <div>{qty}</div>
-            <button id='increase' className='bg-lime-600 h-8 w-8'
+            <button id='increase' className='bg-halie-dark hover:bg-halie-hover text-white font-bold py-2 px-5 rounded-full'
               onClick={(e) => adjustQty(e)}>+</button>
           </div>
         </div>

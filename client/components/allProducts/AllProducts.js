@@ -28,7 +28,7 @@ const AllProducts = () => {
 
   return (
     <>
-      <div className='allProducts h-full flex justify-center flex-wrap'>
+      <div className='allProducts h-full grid grid-cols-4 px-12'>
         {products.map(product => {
           return (
             <ProductCard key={product.id} user={user} product={product} userCart={userCart} setAdded={setAdded}

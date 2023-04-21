@@ -18,6 +18,7 @@ module.exports = {
         'halie-dark': '#9e544c',
         'halie-med' : '#d89e94',
         'halie-light': '#ecb8ac',
+        'halie-hover': '#914C44'
       },
     }
   },
