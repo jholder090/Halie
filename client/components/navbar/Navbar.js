@@ -14,10 +14,10 @@ const Navbar = () => {
   useEffect(() => {
     const handleNavbarHeight = () => {
       setShrunk((isShrunk) => {
-        if (!isShrunk && (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)) {
+        if (!isShrunk && (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90)) {
           return true;
         }
-        if (isShrunk && document.body.scrollTop < 4 && document.documentElement.scrollTop < 4) {
+        if (isShrunk && document.body.scrollTop < 1 && document.documentElement.scrollTop < 1) {
           return false;
         }
         return isShrunk;
@@ -45,8 +45,8 @@ const Navbar = () => {
   }
 
   return (
-    <div className={isShrunk ? 'navbar h-28 z-50 sticky top-0 flex justify-between items-center transition-height duration-500 ease-in-out' :
-      'navbar h-52 z-50 sticky top-0 flex justify-between items-center transition-height duration-500 ease-in-out'
+    <div className={isShrunk ? 'navbar h-28 z-50 bg-halie-light sticky top-0 flex justify-between items-center transition-all duration-500 ease-in-out' :
+      'navbar h-52 z-50 sticky top-0 flex items-center transition-all duration-500 ease-in-out'
     }>
       {isShrunk ?
         <ShrunkNavbar
