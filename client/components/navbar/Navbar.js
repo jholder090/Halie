@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
 import FullNavbar from "./FullNavbar";
 import ShrunkNavbar from "./ShrunkNavbar";
+import "./navbar.css"
 
 const Navbar = () => {
   const [isShrunk, setShrunk] = useState(false);
@@ -45,7 +46,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className={isShrunk ? 'navbar h-28 z-50 bg-halie-light sticky top-0 flex justify-between items-center transition-all duration-500 ease-in-out' :
+    <div className={isShrunk ? 'navbarShrunk h-28 z-50 bg-halie-light sticky top-0 flex justify-between items-center transition-all duration-500 ease-in-out' :
       'navbar h-52 z-50 sticky top-0 flex items-center transition-all duration-500 ease-in-out'
     }>
       {isShrunk ?
