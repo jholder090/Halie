@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToUserCartAsync, adjustQtyAsync } from "../slices/userCartSlice";
 import { addToVisitorCart } from "../slices/visitorCartSlice";
 import { ShoppingCartSimple } from "phosphor-react";
+import "./productCard.css"
 
 const ProductCard = ({ user, product, userCart, setAdded }) => {
   const [isHover, setHover] = useState(false);
@@ -42,20 +43,15 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
 
   return (
     <div onMouseEnter={handleHover} onMouseLeave={handleHover} className={`allProducts-productContainer min-h-fit max-w-sm  mx-4 my-6 flex-col items-center flex-25 border-gray-200 rounded-sm shadow  dark:border-gray-700`} key={product.id}>
-      <div className='allProducts-productImageUrl flex justify-center'>
+      <div className='allProducts-productImageUrl flex flex-col justify-center'>
         <a href="#" className='w-full flex justify-center max-h-72'>
           <img className={isHover ? "rounded-t-lg transition-all duration-700 scale-100" : "rounded-t-lg transition-all duration-700 scale-75"} src={product.imageUrl} alt="Blah" />
         </a>
-      </div>
-      <div className="px-5">
         <div className='allProducts-productName'>
           <a href="#">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{product.name}</h5>
           </a>
         </div>
-        {/* <div className='allProducts-productDescription '>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{product.description}</p>
-        </div> */}
       </div>
       {isLoggedIn
         ?
