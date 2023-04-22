@@ -14,4 +14,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// SINGLE PRODUCT GET /api/products/:productId
+router.get("/:productId", async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.productId);
+    console.log("API SINGLE PRODUCT", product)
+    res.json(product);
+  } catch (err) {
+    next(err);
+  }
+});
+
 

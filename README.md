@@ -4,7 +4,7 @@
 
 ### Other technologies utilized:
 + React.js
-+ Redux Toolkit for state storage
++ Redux Toolkit for state storage 
 + Node for server runtime environment
 + Express for backend architecture
 + RESTful API principles

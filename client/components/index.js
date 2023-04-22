@@ -4,3 +4,4 @@ export {default as AllProducts} from './allProducts/AllProducts'
 export {default as AuthForm } from './auth/AuthForm'
 export {default as Login} from './login/Login'
 export {default as ProductCard} from './productCard/ProductCard'
+export {default as SingleProduct} from './singleProduct/SingleProduct';

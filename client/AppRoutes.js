@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { me } from './components/auth/authSlice'
 import {
   AllProducts,
+  SingleProduct,
   AuthForm,
   Login
 } from './components/index'
@@ -19,7 +20,8 @@ const AppRoutes = () => {
   return (
     <div className='main h-4/5'>
       <Routes >
-        <Route path='/' element={<AllProducts />} />
+        <Route path='/products' element={<AllProducts />} />
+        <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/login' element={<Login />} />
       </Routes>
     </div>
