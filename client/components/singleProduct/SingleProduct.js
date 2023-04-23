@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { fetchSingleProductAsync, selectSingleProduct } from "../slices/singleProductSlice";
 import { addToUserCartAsync, adjustQtyAsync } from "../slices/userCartSlice";
 import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
-import { ShoppingCartSimple } from "phosphor-react";
+import { ShoppingCartSimple, CaretLeft, CaretRight } from "phosphor-react";
+import ProductCarousel from './ProductCarousel'
 
 
 const SingleProduct = () => {
@@ -25,10 +26,6 @@ const SingleProduct = () => {
     dispatch(fetchUserCartAsync(user.id))
   }, [user])
 
-
-  const handleHover = () => {
-    setHover(!isHover);
-  }
 
   const adjustQty = (e) => {
     if (e.target.id == 'decrease' && qty >= 2) {
@@ -56,15 +53,14 @@ const SingleProduct = () => {
 
   return (
     <>
-      <div className="singleProduct-top flex border-solid border-2 border-black">
-        <div className="singleProduct-productImages w-1/2 border-solid border-2 border-cyan-300">
-          <img src={product.imageUrl} alt="Blah" />
-          </div>
+      <div className="singleProduct-top flex border-solid border-2 border-black px-12">
+
+        <ProductCarousel product={product}
+         />
+
         <div className="singleProduct-addToCart w-1/2 border-solid border-2 border-emerald-800">
           <div>${product.price * qty}</div>
-          <div className={isHover ? 'w-36 flex justify-around items-center transition-all duration-700'
-            :
-            'w-36 flex justify-around items-center transition-all duration-700 translate-x-full'}>
+          <div>
             <button id='decrease' className='bg-halie-dark hover:bg-halie-hover text-white font-bold py-2 px-5 rounded-full'
               onClick={(e) => adjustQty(e)}>-</button>
             <div>{qty}</div>
@@ -77,7 +73,10 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
-      <div className="singleProduct-description border-solid border-2 border-red-500">Description</div >
+      <div className="singleProduct-description border-solid border-2 border-red-500">
+        <h3>Description</h3>
+        <div>{product.description}</div>
+      </div >
     </>
 
   );
