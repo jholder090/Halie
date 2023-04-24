@@ -1,34 +1,19 @@
-import React from 'react';
-import { CaretLeft, CaretRight } from 'phosphor-react';
+import React, { useEffect, useState } from 'react';
+import ImageSlider from './ImageSlider'
 
-const ProductCarousel = ({ product }) => {
+const ProductCarousel = ({  }) => {
+const slides = [
+  {url: 'https://i.postimg.cc/Kjy17NBt/Pngtree-cosmetic-lotion-package-mockup-png-5877256.png', title: 'Lotion'},
+  {url:'https://i.postimg.cc/qMCjpYHs/agave.png', title: 'Agave'},
+  {url: 'https://i.postimg.cc/vZrhVVBD/azalea.png', title: 'Azalea'}
+]
+
   return (
-    <div className="singleProduct__carousel w-1/2 border-solid border-2 border-cyan-300 h-85 relative">
-    <button className="carousel__button carousel__buton--left absolute top-2/4 -translate-y-2/4 -left-10 bg-cyan-500 cursor-pointer">
-      <CaretLeft />
-    </button>
-    <div className="carousel__track-container h-5/6 relative bg-lime-300">
-      <ul className="carousel__track list-none">
-        <li className="carousel__slide w-full absolute top-0 bottom-0">
-          <img className='w-full h-full object-cover bg-slate-500' src={product.imageUrl} />
-        </li>
-        <li className="carousel__slide w-full absolute top-0 bottom-0">
-          <img className='w-full h-full object-cover bg-slate-500' src="https://i.postimg.cc/qMCjpYHs/agave.png" />
-        </li>
-        <li className="carousel__slide w-full absolute top-0 bottom-0">
-          <img className='w-full h-full object-cover bg-slate-500' src="https://i.postimg.cc/vZrhVVBD/azalea.png" />
-        </li>
-      </ul>
+    <div className="singleProduct__carousel w-1/2 h-85">
+      <div className="w-8/12 h-full my-0 mx-auto">
+      <ImageSlider slides={slides} />
+      </div>
     </div>
-    <button className="carousel__button carousel__buton--right absolute top-2/4 -translate-y-2/4 -right-10 bg-cyan-500 cursor-pointer">
-      <CaretRight />
-    </button>
-    <div className="carousel__nav bg-pink-500 h-1/6 flex justify-center items-center">
-      <button className="carousel__indicator rounded-full w-4 h-4 bg-slate-300 m-3"></button>
-      <button className="carousel__indicator rounded-full w-4 h-4 bg-slate-300 m-3"></button>
-      <button className="carousel__indicator rounded-full w-4 h-4 bg-slate-300 m-3"></button>
-    </div>
-  </div>
   )
 }
 

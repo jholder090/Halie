@@ -53,7 +53,7 @@ const SingleProduct = () => {
 
   return (
     <>
-      <div className="singleProduct-top flex border-solid border-2 border-black px-12">
+      <div className="singleProduct-top flex  px-12">
 
         <ProductCarousel product={product}
          />
