@@ -58,23 +58,25 @@ const SingleProduct = () => {
         <ProductCarousel product={product}
          />
 
-        <div className="singleProduct-addToCart w-1/2 border-solid border-2 border-emerald-800">
-          <div>${product.price * qty}</div>
-          <div>
-            <button id='decrease' className='bg-halie-dark hover:bg-halie-hover text-white font-bold py-2 px-5 rounded-full'
+        <div className="singleProduct-addToCart w-1/2 flex flex-col justify-center  ">
+          <h4 className="singleProduct__addToCart__price text-2xl font-extrabold my-6">
+          ${product.price * qty}
+          </h4>
+          <div className="singleProduct__addToCart__quantity flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
+            <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full'
               onClick={(e) => adjustQty(e)}>-</button>
             <div>{qty}</div>
-            <button id='increase' className='bg-halie-dark hover:bg-halie-hover text-white font-bold py-2 px-5 rounded-full'
+            <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full'
               onClick={(e) => adjustQty(e)}>+</button>
           </div>
-          <div className="div1 m-1 w-4/12 flex items-center justify-around rounded-full bg-halie-dark hover:bg-halie-hover hover:cursor-pointer" onClick={() => addToUserCart(product)}>
+          <div className="singleProduct__addToCart__buyButton flex justify-center items-center h-10 w-1/2 my-6 rounded-full border border-solid bg-halie-light hover:cursor-pointer" onClick={() => addToUserCart(product)}>
             <ShoppingCartSimple size={28} />
-            <div>${product.price * qty}</div>
+            <div>Add to Cart</div>
           </div>
         </div>
       </div>
-      <div className="singleProduct-description border-solid border-2 border-red-500">
-        <h3>Description</h3>
+      <div className="singleProduct-description mx-96 flex flex-col">
+        <div className="text-2xl font-extrabold">Description</div>
         <div>{product.description}</div>
       </div >
     </>

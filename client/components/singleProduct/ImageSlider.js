@@ -21,9 +21,9 @@ const ImageSlider = ({ slides }) => {
   }
 
   return (
-    <div className="carousel__slider h-full relative overflow-hidden">
+    <div className="carousel__slider h-full relative">
 
-<div className="slider__leftArrow absolute top-1/2 -translate-x-2/4 left-8 cursor-pointer"
+      <div className="slider__leftArrow absolute top-1/2 -translate-x-2/4 left-8 cursor-pointer"
         onClick={goToPrevious}
       >
         <CaretLeft />
@@ -34,13 +34,14 @@ const ImageSlider = ({ slides }) => {
         <CaretRight />
       </div>
 
-      <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="carousel__slide w-full h-5/6 rounded-md bg-center bg-cover">
-        </div>
+<div className="carousel__slideItems flex flex-col justify-center items-center"></div>
+      <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="carousel__slide w-full  h-4/6 my-4  bg-center bg-contain bg-no-repeat">
+      </div>
 
-      <div className="dotsContainer flex justify-center">
+      <div className="dotsContainer h-2/6 flex justify-center items-center">
         {slides.map((slide, slideIndex) => {
           return (
-            <div key={slideIndex} className={slideIndex == currentIndex ? 'w-4 h-4 mx-2 rounded-full bg-slate-500 cursor-pointer' : 'w-4 h-4 mx-2 rounded-full bg-slate-300 cursor-pointer'}
+            <div key={slideIndex} className={slideIndex == currentIndex ? 'w-3 h-3 mx-2 rounded-full bg-slate-500 cursor-pointer' : 'w-3 h-3 mx-2 rounded-full bg-slate-300 cursor-pointer'}
               onClick={() => goToSlide(slideIndex)}></div>
           )
         })}
