@@ -6,7 +6,8 @@ import {
   AllProducts,
   SingleProduct,
   AuthForm,
-  Login
+  Login,
+  Cart
 } from './components/index'
 
 const AppRoutes = () => {
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         <Route path='/products' element={<AllProducts />} />
         <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/cart/:cartId' element={<Cart />} />
       </Routes>
     </div>
   )
