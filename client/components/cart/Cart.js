@@ -63,7 +63,7 @@ const Cart = () => {
         </div>
 
 
-        <div className='cart__checkout flex flex-col items-center w-4/12 '>
+        <div className='cart__checkout flex flex-col items-center w-4/12'>
           <div className='cart__cartTotal w-full flex justify-between border-b border-solid border-border-gray'>
             <div className='cart__itemCount'>{`${userCart.length} items`}</div>
             <div className='cart__totalPrice'>{userCart && userCart.length ? getCartTotal(userCart) : ''}</div>
