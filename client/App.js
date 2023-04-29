@@ -40,7 +40,6 @@ const App = () => {
           <Navbar />
           <AppRoutes />
           <Footer />
-          <div>hello world</div>
         </Elements>
       )}
     </>

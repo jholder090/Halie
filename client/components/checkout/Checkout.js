@@ -19,16 +19,21 @@ const Checkout = () => {
 
     setIsProcessing(true);
 
-    const { error } = await stripe.confirmPayment({
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Where it sends you after payment confirmed
         return_url: `${window.location.origin}`
-      }
+      },
+      redirect: "if_required",
     });
 
     if (error) {
       setMessage(error.message);
+    } else if (paymentIntent && paymentIntent.status ==='succeeded') {
+      setMessage("Payment succeeded!")
+    } else {
+      setMessage("Unexpected state")
     }
 
     setIsProcessing(false)
@@ -42,6 +47,7 @@ const Checkout = () => {
           {isProcessing ? "Processing..." : "Pay now"}
         </span>
       </button>
+      {message ? message : null}
     </form>
   );
 };
