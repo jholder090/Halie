@@ -21,16 +21,17 @@ const PersonalInfo = ({activeSection, setActiveSection}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit!")
+    setActiveSection('Payment')
   }
 
 
   return (
 
     <>
-    <div className='checkout__personalInfo--title'>Personal Information</div>
+    <div className='checkout__personalInfo--title border-b border-solid border-border-gray mb-6 pb-2'>Personal Information</div>
     {activeSection == "Personal Information"
     ?
-    <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+    <form className="w-full border-b border-solid border-border-gray pb-2" onSubmit={handleSubmit}>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">

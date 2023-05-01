@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// useStripe gives access to resolved Stripe object passed thru Promise and Elements provider
-// useElements gives access to Elements instance which allows for safe payment info passed from payment element to Stripe API.
+import CartSummary from './CartSummary';
 
 import CheckoutAccordion from "./CheckoutAccordion"
 
@@ -9,9 +8,9 @@ const Checkout = () => {
 
   return (
     <>
-      <div className='checkoutWrapper flex w-full'>
+      <div className='checkoutWrapper flex w-full px-44 py-10'>
         <CheckoutAccordion />
-        <div>Cart Summary</div>
+        <CartSummary />
       </div>
     </>
 

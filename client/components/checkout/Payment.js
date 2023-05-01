@@ -39,12 +39,12 @@ const Payment = ({ activeSection, setActiveSection }) => {
   }
   return (
     <>
-      <div className='checkout__personalInfo--title'>Secure Payment</div>
+      <div className='checkout__payment--title border-b border-solid border-border-gray mb-6 pb-2'>Secure Payment</div>
       {activeSection == "Payment"
         ?
-        <form className='w-1/2' id="payment-form" onSubmit={handleSubmit}>
+        <form className='checkout_payment--form w-full border-b border-solid border-border-gray mb-6 pb-2' id="payment-form" onSubmit={handleSubmit}>
           <PaymentElement />
-          <button disabled={isProcessing} id='submit'>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded focus:outline-none focus:shadow-outline" disabled={isProcessing} type='submit'>
             <span id='button-text'>
               {isProcessing ? "Processing..." : "Pay now"}
             </span>
@@ -52,7 +52,6 @@ const Payment = ({ activeSection, setActiveSection }) => {
           {message ? message : null}
         </form>
         : null}
-
     </>
   )
 }

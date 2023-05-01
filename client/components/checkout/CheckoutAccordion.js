@@ -3,10 +3,10 @@ import PersonalInfo from './PersonalInfo';
 import Payment from './Payment';
 
 const CheckoutAccordion = () => {
-  const [activeSection, setActiveSection] = useState("Personal Information");
+  const [activeSection, setActiveSection] = useState("Payment");
 
   return (
-    <div className='w-1/2'>
+    <div className='checkout__accordion w-3/5 pr-10'>
       <PersonalInfo activeSection={activeSection} setActiveSection={setActiveSection}/>
       <Payment activeSection={activeSection} setActiveSection={setActiveSection}/>
     </div>

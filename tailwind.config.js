@@ -10,7 +10,8 @@ module.exports = {
       spacing: {
         '85': '360px',
         '100': '620px',
-        '120': '1190px'
+        '120': '1190px',
+        '33vh': '33vh',
       },
       transitionProperty: {
         'height': 'height',
