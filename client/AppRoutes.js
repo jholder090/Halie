@@ -21,7 +21,7 @@ const AppRoutes = () => {
   }, []);
 
   return (
-    <div className='main h-4/5'>
+    <div className='main h-auto'>
       <Routes >
         <Route path='/products' element={<AllProducts />} />
         <Route path='/products/:productId' element={<SingleProduct />} />
