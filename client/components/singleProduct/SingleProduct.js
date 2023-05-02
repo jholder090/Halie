@@ -14,6 +14,7 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const { productId } = useParams();
   const product = useSelector(selectSingleProduct);
+  console.log("product", product)
   const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart)
 
@@ -60,8 +61,9 @@ const SingleProduct = () => {
 
         <div className="singleProduct-addToCart w-1/2 flex flex-col justify-center  ">
           <h4 className="singleProduct__addToCart__price text-2xl font-extrabold my-6">
-          ${product.price * qty}
+          ${product.price}
           </h4>
+          <h3>{`Subtotal: ${(Math.round((product.price * qty) * 100) / 100).toFixed(2)}`}</h3>
           <div className="singleProduct__addToCart__quantity flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
             <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full'
               onClick={(e) => adjustQty(e)}>-</button>

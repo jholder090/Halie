@@ -50,7 +50,7 @@ export const adjustQtyAsync = createAsyncThunk(
   "cart/increase",
   async (cartItem) => {
     try {
-      const { id, cartId, productId, quantity, price } = cartItem;
+      const { id, cartId, quantity, price } = cartItem;
       // console.log("ID", id, "CARTID", cartId, "PRODUCTID", productId, "QTY", quantity)
       // const updatedCartItemQty = { id, quantity, cartId };
       await axios.put(

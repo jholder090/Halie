@@ -44,7 +44,7 @@ const Payment = ({ activeSection, setActiveSection }) => {
         ?
         <form className='checkout_payment--form w-full border-b border-solid border-border-gray mb-6 pb-2' id="payment-form" onSubmit={handleSubmit}>
           <PaymentElement />
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded focus:outline-none focus:shadow-outline" disabled={isProcessing} type='submit'>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded focus:outline-none focus:shadow-outline disabled:opacity-25" disabled={isProcessing} type='submit'>
             <span id='button-text'>
               {isProcessing ? "Processing..." : "Pay now"}
             </span>

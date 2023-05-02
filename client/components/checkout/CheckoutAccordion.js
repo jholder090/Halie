@@ -3,7 +3,7 @@ import PersonalInfo from './PersonalInfo';
 import Payment from './Payment';
 
 const CheckoutAccordion = () => {
-  const [activeSection, setActiveSection] = useState("Payment");
+  const [activeSection, setActiveSection] = useState("Personal Information");
 
   return (
     <div className='checkout__accordion w-3/5 pr-10'>

@@ -1,8 +1,11 @@
 /* Some Normalize Styling */
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cormorant+Garamond:ital,wght@0,400;1,300&family=DM+Serif+Display:ital@1&family=Italiana&family=Prata&display=swap');
 
 html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -26,5 +29,9 @@ body {
 
 #root {
   height: auto;
+  /* font-family: 'Antic Didone', serif; */
+  /* font-family: 'Cormorant Garamond', serif; */
+  font-family: 'DM Serif Display', serif;
+  /* font-family: 'Italiana', serif; */
+  /* font-family: 'Prata', serif; */
 }
-
