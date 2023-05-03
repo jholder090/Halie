@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { adjustQtyAsync } from "../slices/userCartSlice";
+import { adjustQtyAsync, removeCartItemAsync } from "../slices/userCartSlice";
 
-const CartItem = ({ item }) => {
+
+const CartItem = ({ item, removed, setRemoved }) => {
   const dispatch = useDispatch();
 
   const adjustCartQuantityAsync = (e) => {
@@ -16,6 +17,12 @@ const CartItem = ({ item }) => {
     newItem.quantity++;
     newItem.price = newItem.product.price * newItem.quantity;
     return dispatch(adjustQtyAsync(newItem));
+  }
+
+  const removeItemAsync = (item) => {
+    setRemoved(true);
+    dispatch(removeCartItemAsync(item));
+    setRemoved(false);
   }
 
   return (
@@ -38,7 +45,7 @@ const CartItem = ({ item }) => {
           >+</button>
         </div>
         <div className='cart__itemTotal'>${(Math.round((item.quantity * item.product.price) * 100) / 100).toFixed(2)}</div>
-        <div className='cart__clearItem'>X</div>
+        <div className='cart__clearItem' onClick={() => removeItemAsync(item)}>X</div>
       </div>
     </div>
   )

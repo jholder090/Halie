@@ -6,6 +6,7 @@ import CartItem from "./CartItem";
 import './cart.css'
 
 const Cart = () => {
+  const [removed, setRemoved] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartId } = useParams();
@@ -42,7 +43,7 @@ const Cart = () => {
         <div className='cart__cartList flex flex-col w-8/12 px-4 justify-between  '>
           {userCart.map((item, idx) => {
             return (
-              <CartItem key={idx} item={item} />
+              <CartItem key={idx} item={item} removed={removed} setRemoved={setRemoved} />
             )
           })}
           <button className='cart__clearCart underline'>Clear Cart</button>

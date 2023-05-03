@@ -40,3 +40,14 @@ router.put('/:id', async (req, res, next) => {
     next(error)
   }
 });
+
+router.delete('/:id/', async (req, res, next) => {
+  try {
+    const cartItem = await CartProduct.findByPk(req.params.id);
+    console.log("API REMOVED ITEM ++++>", cartItem)
+    const removedItem = await cartItem.destroy()
+    res.send(removedItem);
+  } catch (error) {
+    next(error)
+  }
+});

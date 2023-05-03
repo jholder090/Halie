@@ -31,20 +31,21 @@ return data;
   }
 );
 
-// export const removeCartItemAsync = createAsyncThunk(
-//   "cart/remove",
-//   async ({ idx, cartId }) => {
-//     try {
-//       await axios.delete(`http://localhost:3000/api/cart/${cartId}/${idx}`);
-//       const { data } = await axios.get(
-//         `http://localhost:3000/api/cart/${cartId}`
-//       );
-//       return data;
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-// );
+export const removeCartItemAsync = createAsyncThunk(
+  "cart/remove",
+  async ({ id, cartId }) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/cart/${id}`);
+      const { data } = await axios.get(
+        `http://localhost:5000/api/cart/${cartId}`
+      );
+      console.log("CART AFTER DELETE ===>", data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 
 export const adjustQtyAsync = createAsyncThunk(
   "cart/increase",
