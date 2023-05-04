@@ -8,6 +8,7 @@ const Payment = ({ activeSection, setActiveSection }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  console.log("ORIGIN", window.location.origin)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +23,9 @@ const Payment = ({ activeSection, setActiveSection }) => {
       elements,
       confirmParams: {
         // Where it sends you after payment confirmed
-        return_url: `${window.location.origin}`
+        return_url: `${window.location.origin}/completion`
       },
-      redirect: "if_required",
+      // redirect: "if_required",
     });
 
     if (error) {

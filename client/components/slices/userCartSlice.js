@@ -89,9 +89,9 @@ export const userCartSlice = createSlice({
     builder.addCase(adjustQtyAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    // builder.addCase(removeCartItemAsync.fulfilled, (state, action) => {
-    //   return action.payload;
-    // });
+    builder.addCase(removeCartItemAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
   },
 });
 

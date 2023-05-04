@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { adjustQtyAsync, removeCartItemAsync } from "../slices/userCartSlice";
 
 
-const CartItem = ({ item, removed, setRemoved }) => {
+const CartItem = ({ item,  }) => {
   const dispatch = useDispatch();
 
   const adjustCartQuantityAsync = (e) => {
@@ -11,6 +11,9 @@ const CartItem = ({ item, removed, setRemoved }) => {
 
     if (e.target.id == "decrease") {
       newItem.quantity--;
+      if (newItem.quantity < 1) {
+        removeItemAsync(item);
+      }
       newItem.price = newItem.product.price * newItem.quantity;
       return dispatch(adjustQtyAsync(newItem));
     }
@@ -20,9 +23,7 @@ const CartItem = ({ item, removed, setRemoved }) => {
   }
 
   const removeItemAsync = (item) => {
-    setRemoved(true);
     dispatch(removeCartItemAsync(item));
-    setRemoved(false);
   }
 
   return (
@@ -45,7 +46,7 @@ const CartItem = ({ item, removed, setRemoved }) => {
           >+</button>
         </div>
         <div className='cart__itemTotal'>${(Math.round((item.quantity * item.product.price) * 100) / 100).toFixed(2)}</div>
-        <div className='cart__clearItem' onClick={() => removeItemAsync(item)}>X</div>
+        <div className='cart__clearItem cursor-pointer' onClick={() => removeItemAsync(item)}>X</div>
       </div>
     </div>
   )
