@@ -13,7 +13,7 @@ const FullNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartSiz
       <img src='https://i.postimg.cc/Jn7HF160/Temple-Rose-Title.png' alt='Halie Logo' className='h-full w-2/5' />
       <nav className='flex items-center justify-center h-full w-1/5'>
         <ul className='flex'>
-          <li onClick={() => navigate(`/products/`)} className="px-1 cursor-pointer">Home</li>
+          <li onClick={() => navigate(`/home`)} className="px-1 cursor-pointer">Home</li>
           <li onClick={() => navigate(`/products/`)} className="px-1 cursor-pointer">Products</li>
           <li onClick={() => navigate(`/products/`)} className="px-1 cursor-pointer">About</li>
           {isLoggedIn ? (

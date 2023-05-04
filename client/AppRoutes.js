@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { me } from './components/auth/authSlice'
 import {
+  Home,
   AllProducts,
   SingleProduct,
-  AuthForm,
   Login,
   Cart,
   Checkout,
@@ -24,6 +24,7 @@ const AppRoutes = () => {
   return (
     <div className='main h-auto'>
       <Routes >
+        <Route path='/home' element={<Home />} />
         <Route path='/products' element={<AllProducts />} />
         <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/login' element={<Login />} />
