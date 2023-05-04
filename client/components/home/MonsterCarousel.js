@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 
-const Carousel = ({ slides }) => {
+const MonsterCarousel = ({ slides, parentWidth }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef(null);
 
@@ -35,6 +35,38 @@ const Carousel = ({ slides }) => {
     setCurrentIndex(slideIndex);
   }
 
+  const slideStyles = {
+    width: '100%',
+    height: '300px',
+    borderRadius: '10px',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
+
+  const slidesContainerStyles = {
+    display: 'flex',
+    height: '100%',
+    transition: 'transform ease-out 0.3s'
+  }
+
+  const slidesContainerOverflowStyles = {
+    overflow: 'hidden',
+    height: '100%',
+    width: '500px'
+  }
+
+  const getSlideStylesWithBackground = (slideIndex) => ({
+    ...slideStyles,
+    backgroundImage: `url(${slides[slideIndex].url})`,
+    width: `${parentWidth}px`
+  })
+
+  const getSlidesContainerWithWidth = () => ({
+    ...slidesContainerStyles,
+    width: parentWidth * slides.length,
+    transform: `translateX(${-(currentIndex * parentWidth)}px)`
+  })
+
   return (
     <div className="carousel__slider h-full relative">
 
@@ -48,11 +80,16 @@ const Carousel = ({ slides }) => {
       >
         <CaretRight />
       </div>
-
-<div className="carousel__slideItems flex flex-col justify-center items-center"></div>
-      <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="carousel__slide w-full  h-4/6 my-4  bg-center bg-contain bg-no-repeat">
+      <div className='overflowContainer' style={slidesContainerOverflowStyles}>
+        <div className="carousel__slideItems" style={getSlidesContainerWithWidth()}>
+          {slides.map((slide, slideIndex) => {
+            return (
+              <div key={slideIndex} style={getSlideStylesWithBackground(slideIndex)}>
+              </div>
+            )
+          })}
+        </div>
       </div>
-
       <div className="dotsContainer h-2/6 flex justify-center items-center">
         {slides.map((slide, slideIndex) => {
           return (
@@ -66,6 +103,6 @@ const Carousel = ({ slides }) => {
   )
 }
 
+// w-full  h-4/6 my-4  bg-center bg-contain bg-no-repeat
 
-
-export default Carousel;
+export default MonsterCarousel;
