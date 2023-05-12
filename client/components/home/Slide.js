@@ -12,9 +12,12 @@ const Slide = ({ slide }) => {
   }
 
   return (
-    <Paper>
-      <div style={slideStyles}></div>
-      <h2>{slide.title}</h2>
+    <Paper className='flex justify-center align-center'>
+      <div className='flex flex-col justify-center align-center'>
+        <div style={slideStyles}></div>
+        <h2 className='text-center'>{slide.title}</h2>
+      </div>
+
     </Paper>
   )
 }

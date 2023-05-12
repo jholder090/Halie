@@ -11,7 +11,28 @@ const HomeCarousel = () => {
     ]
 
    return (
-    <Carousel animation={"slide"} height={'400px'} interval={2000} duration={500} stopAutoPlayOnHover={false}>
+    <Carousel animation={"slide"} height={'300px'} interval={5000} duration={500} stopAutoPlayOnHover={false}  fullHeightHover={false}
+    navButtonsProps={{
+      style: {
+          backgroundColor: 'cornflowerblue',
+          borderRadius: 0
+      }
+   }}
+   navButtonsWrapperProps={{   // Move the buttons to the bottom. Unsetting top here to override default style.
+      style: {
+          bottom: '0',
+          top: 'unset'
+      }
+  }}
+  NextIcon='hello'             // Change the "inside" of the next button to "next"
+  PrevIcon='goodbye'
+  indicatorContainerProps={{
+   style: {
+       height: '50px',
+       backgroundColor: 'cornflowerblue'
+   }
+}}
+    className='CAROUSEL bg-slate-300 h-3/5'>
       {slides.map((slide, idx) => {
          return (
             <Slide key={idx} slide={slide} />

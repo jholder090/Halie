@@ -7,10 +7,8 @@ const Home = () => {
 
     return (
       <div className="home h-auto">
-
         <HomeCarousel />
         <div>Welcome home.</div>
-
       </div>
     )
 }
