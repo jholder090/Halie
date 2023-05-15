@@ -7,5 +7,6 @@ export {default as Login} from './login/Login'
 export {default as ProductCard} from './productCard/ProductCard'
 export {default as SingleProduct} from './singleProduct/SingleProduct';
 export {default as Cart} from './cart/Cart';
+export {default as VisitorCart} from './visitorCart/VisitorCart'
 export {default as Checkout} from './checkout/Checkout';
 export {default as Completion} from './completion/Completion';

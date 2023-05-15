@@ -11,7 +11,7 @@ const HomeCarousel = () => {
    ]
 
    return (
-      <Carousel animation={"slide"} height={'400px'} interval={7000} duration={700} stopAutoPlayOnHover={true} fullHeightHover={false}
+      <Carousel animation={"slide"} height={'400px'} interval={6000} duration={700} stopAutoPlayOnHover={false} fullHeightHover={false}
          navButtonsProps={{
             style: {
                backgroundColor: '#9e544c',

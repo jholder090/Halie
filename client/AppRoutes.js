@@ -8,6 +8,7 @@ import {
   SingleProduct,
   Login,
   Cart,
+  VisitorCart,
   Checkout,
   Completion,
 } from './components/index'
@@ -29,6 +30,7 @@ const AppRoutes = () => {
         <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/login' element={<Login />} />
         <Route path='/cart/:cartId' element={<Cart />} />
+        <Route path='visitorCart' element={<VisitorCart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/completion' element={<Completion />} />
       </Routes>

@@ -15,13 +15,12 @@ const ShrunkNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartS
         <ul className='flex'>
           <li onClick={() => navigate(`/home`)} className="px-1 cursor-pointer">Home</li>
           <li onClick={() => navigate(`/products/`)} className="px-1 cursor-pointer">Products</li>
-          <li onClick={() => navigate(`/products/`)} className="px-1 cursor-pointer">About</li>
           {isLoggedIn ? (
             <li onClick={() => navigate(`/cart/1`)} className="px-1 cursor-pointer">
               {`My Cart | ${getUserCartSize(userCart)}`}
             </li>
           ) : (
-            <li onClick={() => navigate(`/cart/1`)} className="px-1 cursor-pointer">
+            <li onClick={() => navigate(`/visitorCart`)} className="px-1 cursor-pointer">
               ({getVisitorCartSize(visitorCart)})
             </li>
           )}
