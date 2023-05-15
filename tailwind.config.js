@@ -26,7 +26,8 @@ module.exports = {
       },
       fontSize: {
         base: '1.5rem',
-        header: '2.25rem'
+        header: '2.25rem',
+        small: '1rem'
       },
       fontWeight: {
         base: 400,

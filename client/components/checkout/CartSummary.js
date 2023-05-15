@@ -34,12 +34,17 @@ const CartSummary = () => {
 
   return (
     <div className='checkout__cartSummary w-2/5 h-33vh flex flex-col border border-solid border-border-gray p-4'>
-      <div className='checkout__cartSummary--itemsWrapper h-1/3 border-b border-solid border-border-gray'>
-        <div className='checkout__cartSummary--numItems'>Num Items
+      <div className='checkout__cartSummary--itemsDetails border-b border-solid border-border-gray'>
+        <div className='checkout__cartSummary--itemsWrapper h-1/3 flex justify-between'>
+          <div className='checkout__cartSummary--numItems font-strong'>Num Items
+          </div>
+          <div>{userCart && userCart.length ? getUserCartSize(userCart) : null}</div>
         </div>
-        <div>{userCart && userCart.length ? getUserCartSize(userCart) : null}</div>
-        <div className='checkout__cartSummary--showDetails underline cursor-pointer' onClick={() => navigate('/cart/1')}>Show Details</div>
+        <div className='checkout__cartSummary--showDetails underline cursor-pointer pt-2 text-small' onClick={() => navigate('/cart/1')}>Show Details
+        </div>
       </div>
+
+
       <div className='checkout__cartSummary--addUp h-1/3 '>
         <div className='checkout__cartSummary--subtotal flex justify-between'>
           <div>Subtotal</div>
@@ -50,7 +55,7 @@ const CartSummary = () => {
           <div>$45454.44</div>
         </div>
         <div className='checkout__cartSummary--total flex justify-between'>
-          <div>Total</div>
+          <div className='font-strong'>Total</div>
           <div>$99999.00</div>
         </div>
       </div>
