@@ -23,6 +23,15 @@ module.exports = {
         'halie-hover': '#914C44',
         'border-gray': '#ddd'
       },
+      fontSize: {
+        base: '1.5rem',
+        header: '2.25rem'
+      },
+      fontWeight: {
+        base: 400,
+        strong: 600,
+        extraStrong: 800,
+      }
     }
   },
   variants: {},

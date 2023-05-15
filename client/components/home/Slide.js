@@ -7,13 +7,13 @@ const Slide = ({ slide }) => {
     backgroundImage: `url(${slide.url})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '200px',
-    width: '250px',
+    height: '100%',
+    width: '350px',
   }
 
   return (
-    <Paper className='flex justify-center align-center'>
-      <div className='flex flex-col justify-center align-center'>
+    <Paper className='SLIDE h-full flex justify-center align-center border-0'>
+      <div className='flex  h-full flex-col justify-center align-center'>
         <div style={slideStyles}></div>
         <h2 className='text-center'>{slide.title}</h2>
       </div>
