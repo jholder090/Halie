@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { adjustQtyAsync, removeCartItemAsync } from "../slices/userCartSlice";
+import {
+  increase,
+  decrease,
+  remove,
+} from '../slices/visitorCartSlice'
 
-
-const CartItem = ({ item,  }) => {
+const CartItem = ({ item, }) => {
   const dispatch = useDispatch();
 
-  const adjustCartQuantityAsync = (e) => {
-    let newItem = { ...item };
-
+  const adjustQty = (e) => {
     if (e.target.id == "decrease") {
-      newItem.quantity--;
-      if (newItem.quantity < 1) {
-        removeItemAsync(item);
+      if (item.quantity == 1) {
+        dispatch(remove(item.id))
+      } else {
+        dispatch(decrease(item.id))
       }
-      newItem.price = newItem.product.price * newItem.quantity;
-      return dispatch(adjustQtyAsync(newItem));
     }
-    newItem.quantity++;
-    newItem.price = newItem.product.price * newItem.quantity;
-    return dispatch(adjustQtyAsync(newItem));
-  }
+    if (e.target.id == 'increase') {
+      dispatch(increase(item.id))
+    }
 
-  const removeItemAsync = (item) => {
-    dispatch(removeCartItemAsync(item));
   }
 
   return (
@@ -39,14 +37,14 @@ const CartItem = ({ item,  }) => {
       </div>
       <div className='cart_itemQty flex justify-around items-center w-2/5 mr-6'>
         <div className="cart__adjustQty flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
-          <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full' onClick={(e) => adjustCartQuantityAsync(e)}
+          <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full' onClick={(e) => adjustQty(e)}
           >-</button>
           <div>{item.quantity}</div>
-          <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full' onClick={(e) => adjustCartQuantityAsync(e)}
+          <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full' onClick={() => dispatch(increase(item.id))}
           >+</button>
         </div>
         <div className='cart__itemTotal'>${(Math.round((item.quantity * item.price) * 100) / 100).toFixed(2)}</div>
-        <div className='cart__clearItem cursor-pointer' onClick={() => removeItemAsync(item)}>X</div>
+        <div className='cart__clearItem cursor-pointer' onClick={() => dispatch(remove(item.id))}>X</div>
       </div>
     </div>
   )

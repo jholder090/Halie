@@ -21,6 +21,7 @@ const visitorCartSlice = createSlice({
       localStorage.setItem("local", JSON.stringify(state))
     },
     decrease(state, action) {
+      console.log("action payload", action.payload)
       const item = state.find((item) => item.id === action.payload);
       if (item.quantity === 1) {
         item.quantity = 1;
@@ -38,5 +39,5 @@ const visitorCartSlice = createSlice({
 });
 export default visitorCartSlice.reducer;
 
-export const { addToVisitorCart } =
+export const { addToVisitorCart, increase, decrease, remove } =
   visitorCartSlice.actions;
