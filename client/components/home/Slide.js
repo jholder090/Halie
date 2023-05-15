@@ -5,17 +5,17 @@ const Slide = ({ slide }) => {
 
   const slideStyles = {
     backgroundImage: `url(${slide.url})`,
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    height: '100%',
-    width: '350px',
+    height: '95%',
+    width: '500px',
   }
 
   return (
     <Paper className='SLIDE h-full flex justify-center align-center border-0'>
-      <div className='flex  h-full flex-col justify-center align-center'>
+      <div className='flex h-full flex-col justify-center align-center'>
         <div style={slideStyles}></div>
-        <h2 className='text-center'>{slide.title}</h2>
       </div>
 
     </Paper>
