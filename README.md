@@ -15,7 +15,16 @@
 
 
 # Application Start-Up
-## Fork and Clone the Repository
+1. Create a new, empty directory in the terminal of your local machine.
+2. Initialize empty repository with ```git init```
+3. Add this repo to your repository with one of the following methods:
++ HTTPS method: ```git remote add "YOUR_REPO_NAME_HERE" https://github.com/jholder090/TempleRose.git```
++ SSH method: ```git remote add "YOUR_REPO_NAME_HERE" git@github.com:jholder090/TempleRose.git```
+4. ```git fetch "YOUR_REPO_NAME_HERE"```
+5. ```git merge "YOUR_REPO_NAME_HERE"/main```
+6. ```git branch -m master main```
+
+<!-- ## Fork and Clone the Repository
 
 1. Click "Fork" in the upper-right corner of this page.
 2. Add your personal details to the forked repo and click "Create Fork".
@@ -27,5 +36,5 @@
   ```git clone https://github.com/"YOUR-USERNAME-HERE"/TempleRose.git```
 + For SSH:
   ```git clone git@github.com:"YOUR-USERNAME-HERE"/TempleRose.git```
-7. You will now have your own version of this repository. PLEASE NOTE that you may not have write access to the original repo. You can make changes on your forked version, however.
+7. You will now have your own version of this repository. PLEASE NOTE that you may not have write access to the original repo. You can make changes on your forked version, however. -->
 
