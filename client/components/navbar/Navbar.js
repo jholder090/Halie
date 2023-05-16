@@ -11,6 +11,7 @@ const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userCart = useSelector(state => state.userCart);
   const visitorCart = useSelector(state => state.visitorCart);
+  console.log("Visitor cart: ", visitorCart)
 
   useEffect(() => {
     const handleNavbarHeight = () => {
