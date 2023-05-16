@@ -33,6 +33,7 @@
 
 ### IMPORTANT: For the application to render as it currently stands, you must do one of two things:
 3a. Procure your own Stripe Publishable Key and Stripe Secret API Key for the application to render. Please visit stripe.com to get your own keys.
+
 3b. Go to the file /client/App.js and comment out lines 17-32,38-39,43-44. This will effectively remove the Stripe API from the application for temporary purposes.
 
 
