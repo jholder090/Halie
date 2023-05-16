@@ -1,6 +1,6 @@
 # An e-commerce application for purchasing natural skin care products
 
-## Currently, I am working on an image carousel for the home page. This application will eventually be deployed for my friend's business!
+## Currently, I am working on visitor vs. logged-in user interfaces. This application will eventually be deployed for my friend's business!
 
 ### Other technologies utilized:
 + Tailwind CSS styling
