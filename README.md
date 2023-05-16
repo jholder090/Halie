@@ -15,14 +15,33 @@
 
 
 # Application Start-Up
+
+## Creating a new repository
 1. Create a new, empty directory in the terminal of your local machine.
-2. Initialize empty repository with ```git init```
-3. Add this repo to your repository with one of the following methods:
+2. Initialize empty repository with ```git init``` command.
+3. Add this repo to your repository with one of the following methods (remember to put in your actual name for this repo):
 + HTTPS method: ```git remote add "YOUR_REPO_NAME_HERE" https://github.com/jholder090/TempleRose.git```
 + SSH method: ```git remote add "YOUR_REPO_NAME_HERE" git@github.com:jholder090/TempleRose.git```
 4. ```git fetch "YOUR_REPO_NAME_HERE"```
 5. ```git merge "YOUR_REPO_NAME_HERE"/main```
 6. ```git branch -m master main```
+
+## Start up and customize the application
+1. Update project name and description in `package.json`
+2. `npm install` to install all project dependencies
+3. Create a .env fild in the root directory of the project and add required keys
+**IMPORTANT: You must have your own Stripe Publishable Key and Stripe Secret API Key for the application to render. Please visit stripe.com to procure your own keys. **
+4. Create two postgres databases (`MY_APP_NAME` should match the `name`
+  parameter in `package.json`):
+* These commands will create both your **development** and **test** databases
+
+```
+createdb <YOUR APP NAME HERE FROM package.json>
+createdb <YOUR APP NAME HERE FROM package.json>-test
+```
+5. ```npm run seed``` to seed starter data to your database.
+6. ```npm run start:dev``` to start the server and get the application up and running.
+7. ```npm run start:dev:seed``` will start the server and seed the database at the same time.
 
 <!-- ## Fork and Clone the Repository
 
