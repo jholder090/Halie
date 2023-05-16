@@ -32,10 +32,10 @@
 3. Create a .env file in the root directory of the project and add required keys
 
 ### IMPORTANT: For the application to render as it currently stands, you must do one of two things:
-+ Procure your own Stripe Publishable Key and Stripe Secret API Key for the application to render. Please visit stripe.com to get your own keys.
-+ Go to the file /client/App.js and comment out lines 17-32,38-39,43-44. This will effectively remove the Stripe API from the application for temporary purposes.
+3a. Procure your own Stripe Publishable Key and Stripe Secret API Key for the application to render. Please visit stripe.com to get your own keys.
+3b. Go to the file /client/App.js and comment out lines 17-32,38-39,43-44. This will effectively remove the Stripe API from the application for temporary purposes.
 
-  
+
 
 4. Create two postgres databases ("YOUR_REPO_NAME_HERE" should match the `name`
   parameter in `package.json`):
