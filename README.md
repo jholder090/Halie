@@ -24,8 +24,8 @@
 5. Open a terminal on your local machine and navigate to the directory where you want to clone this repo.
 6. Copy the following code to the command line (remember to put in your actual username):
 + For HTTPS:
-  git clone https://github.com/"YOUR-USERNAME-HERE"/TempleRose.git
+  ```git clone https://github.com/"YOUR-USERNAME-HERE"/TempleRose.git```
 + For SSH:
-  git clone git@github.com:"YOUR-USERNAME-HERE"/TempleRose.git
+  ```git clone git@github.com:"YOUR-USERNAME-HERE"/TempleRose.git```
 7. You will now have your own version of this repository. PLEASE NOTE that you may not have write access to the original repo. You can make changes on your forked version, however.
 
