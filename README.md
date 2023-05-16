@@ -27,20 +27,20 @@
 6. ```git branch -m master main```
 
 ## Start up and customize the application
-1. Update project name and description in `package.json`
-2. `npm install` to install all project dependencies
-3. Create a .env fild in the root directory of the project and add required keys
+1. Update the project name and description in `package.json`.
+2. Command `npm install` to install all project dependencies
+3. Create a .env file in the root directory of the project and add required keys
 **IMPORTANT: You must have your own Stripe Publishable Key and Stripe Secret API Key for the application to render. Please visit stripe.com to procure your own keys. **
-4. Create two postgres databases (`MY_APP_NAME` should match the `name`
+4. Create two postgres databases ("YOUR_REPO_NAME_HERE" should match the `name`
   parameter in `package.json`):
 * These commands will create both your **development** and **test** databases
 
 ```
-createdb <YOUR APP NAME HERE FROM package.json>
-createdb <YOUR APP NAME HERE FROM package.json>-test
+createdb "YOUR_REPO_NAME_HERE"
+createdb "YOUR_REPO_NAME_HERE"-test
 ```
-5. ```npm run seed``` to seed starter data to your database.
-6. ```npm run start:dev``` to start the server and get the application up and running.
+5. Command ```npm run seed``` to seed starter data to your database.
+6. Type ```npm run start:dev``` to start the server and get the application up and running.
 7. ```npm run start:dev:seed``` will start the server and seed the database at the same time.
 
 <!-- ## Fork and Clone the Repository
