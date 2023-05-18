@@ -34,6 +34,7 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
       if (item.productId === product.id) {
         item.quantity += qty;
         item.price = item.product.price * item.quantity
+        setQty(1);
         return dispatch(adjustQtyAsync(item))
       }
     }
@@ -41,8 +42,16 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
     let quantity = qty;
     let productId = product.id;
     let price = product.price * quantity;
+    setQty(1);
     dispatch(addToUserCartAsync({ cartId, productId, quantity, price }))
   }
+
+  const adjustVisitorCart = ({product, qty}) => {
+    dispatch(addToVisitorCart({product, qty}))
+    setQty(1);
+  }
+
+
 
   return (
     <div onMouseEnter={handleHover} onMouseLeave={handleHover} className={`allProducts-productContainer min-h-fit max-w-sm  mx-4 my-6 flex-col items-center flex-25 border-gray-200 rounded-sm shadow  dark:border-gray-700`} key={product.id}>
@@ -74,7 +83,7 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
         :
         <div id={product.id}
           className="allProducts-buyButton overflow-hidden  h-12 z-50 text-sm font-medium text-center text-white bg-halie-light focus:ring-4 focus:outline-none flex justify-between" >
-          <div className="div1 m-1 w-4/12 flex items-center justify-around rounded-full bg-halie-dark hover:bg-halie-hover hover:cursor-pointer" onClick={() => dispatch(addToVisitorCart({product, qty}))}>
+          <div className="div1 m-1 w-4/12 flex items-center justify-around rounded-full bg-halie-dark hover:bg-halie-hover hover:cursor-pointer" onClick={() => adjustVisitorCart({product, qty})}>
             <ShoppingCartSimple size={28} />
             <div>${(Math.round((product.price * qty) * 100) / 100).toFixed(2)}</div>
           </div>

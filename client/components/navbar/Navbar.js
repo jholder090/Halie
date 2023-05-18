@@ -7,10 +7,15 @@ import "./navbar.css"
 
 const Navbar = () => {
   const [isShrunk, setShrunk] = useState(false);
+  const dispatch = useDispatch();
   const user = useSelector(state => state.auth.me);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userCart = useSelector(state => state.userCart);
   const visitorCart = useSelector(state => state.visitorCart);
+
+  useEffect(() => {
+    dispatch(fetchUserCartAsync(user.id))
+  }, [user])
 
   useEffect(() => {
     const handleNavbarHeight = () => {

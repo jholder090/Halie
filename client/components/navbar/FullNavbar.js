@@ -39,7 +39,7 @@ const FullNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartSiz
       </button>
       )
       :
-      (<button type="button">
+      (<button type="button" onClick={() => navigate('/login')}>
         Login
       </button>)
       }
