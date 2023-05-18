@@ -14,7 +14,7 @@ const visitorCartSlice = createSlice({
       if (itemInCart) {
         itemInCart.quantity += qty;
       } else {
-        state.push({ ...action.payload, quantity: qty });
+        state.push({ ...product, quantity: qty });
       }
       localStorage.setItem("local", JSON.stringify(state));
     },

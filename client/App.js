@@ -14,34 +14,33 @@ const App = () => {
   // Initialize elements
   const [clientSecret, setClientSecret] = useState('');
 
-  // useEffect(() => {
-  //   // Promise that resolves to a Stripe object
-  //   // Uses publishable key as an argument
-  //   setStripePromise(loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`));
-  // }, []);
+  useEffect(() => {
+    // Promise that resolves to a Stripe object
+    // Uses publishable key as an argument
+    setStripePromise(loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`));
+  }, []);
 
-  // // Create payment intent using client secret from server
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const { data } = await axios.post('/stripe/client-secret', {
-  //     })
-  //     const { clientSecret } = data;
-  //     setClientSecret(clientSecret);
-  //   }
-  //   fetchData();
-  // }, [])
+  // Create payment intent using client secret from server
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await axios.post('/stripe/client-secret', {
+      })
+      const { clientSecret } = data;
+      setClientSecret(clientSecret);
+    }
+    fetchData();
+  }, [])
 
-  // options={{ clientSecret }}
 
   return (
     <>
-      {/* {stripePromise && clientSecret && (
-        <Elements stripe={stripePromise} options={{ clientSecret }} > */}
+      {stripePromise && clientSecret && (
+        <Elements stripe={stripePromise} options={{ clientSecret }} >
           <Navbar />
           <AppRoutes />
           <Footer />
-        {/* </Elements>
-      )} */}
+        </Elements>
+      )}
     </>
 
   );
