@@ -7,11 +7,14 @@ const visitorCartSlice = createSlice({
   initialState: local,
   reducers: {
     addToVisitorCart(state, action) {
-      const itemInCart = state.find((item) => item.id === action.payload.id);
+      const {product, qty} = action.payload
+      console.log("Slice product: ", product);
+      console.log("Slice qty: ", qty)
+      const itemInCart = state.find((item) => item.id === product.id);
       if (itemInCart) {
-        itemInCart.quantity++;
+        itemInCart.quantity += qty;
       } else {
-        state.push({ ...action.payload, quantity: 1 });
+        state.push({ ...action.payload, quantity: qty });
       }
       localStorage.setItem("local", JSON.stringify(state));
     },

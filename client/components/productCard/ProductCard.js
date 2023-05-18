@@ -74,7 +74,7 @@ const ProductCard = ({ user, product, userCart, setAdded }) => {
         :
         <div id={product.id}
           className="allProducts-buyButton overflow-hidden  h-12 z-50 text-sm font-medium text-center text-white bg-halie-light focus:ring-4 focus:outline-none flex justify-between" >
-          <div className="div1 m-1 w-4/12 flex items-center justify-around rounded-full bg-halie-dark hover:bg-halie-hover hover:cursor-pointer" onClick={() => dispatch(addToVisitorCart(product))}>
+          <div className="div1 m-1 w-4/12 flex items-center justify-around rounded-full bg-halie-dark hover:bg-halie-hover hover:cursor-pointer" onClick={() => dispatch(addToVisitorCart({product, qty}))}>
             <ShoppingCartSimple size={28} />
             <div>${product.price * qty}</div>
           </div>

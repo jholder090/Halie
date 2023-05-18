@@ -13,6 +13,7 @@ const AllProducts = () => {
   const products = useSelector(selectAllProducts);
   const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart)
+  console.log("Products", products)
 
   useEffect(() => {
     dispatch(fetchAllProducts());
