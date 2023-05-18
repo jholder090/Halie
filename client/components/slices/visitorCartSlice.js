@@ -13,7 +13,7 @@ const visitorCartSlice = createSlice({
       } else {
         state.push({ ...action.payload, quantity: 1 });
       }
-      localStorage.setItem("local", JSON.stringify(state))
+      localStorage.setItem("local", JSON.stringify(state));
     },
     increase(state, action) {
       const item = state.find((item) => item.id === action.payload);
