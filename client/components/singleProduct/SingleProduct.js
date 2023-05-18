@@ -56,48 +56,49 @@ const SingleProduct = () => {
 
   return (
     <>
-      <div className="singleProduct-top flex  px-12">
-
-        <ProductCarousel product={product}
-        />
-        {isLoggedIn ?
-          <div className="singleProduct-addToCart w-1/2 flex flex-col justify-center  ">
-            <h4 className="singleProduct__addToCart__price text-2xl font-extrabold my-6">
-              ${product.price}
-            </h4>
-            <h3>{`Subtotal: ${(Math.round((product.price * qty) * 100) / 100).toFixed(2)}`}</h3>
-            <div className="singleProduct__addToCart__quantity flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
-              <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full'
-                onClick={(e) => adjustQty(e)}>-</button>
-              <div>{qty}</div>
-              <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full'
-                onClick={(e) => adjustQty(e)}>+</button>
+      <div className="singleProduct-top flex flex-col items-center px-12 w-full">
+        <div className="title w-full text-center text-header font-extraStrong">{product.name}</div>
+        <div className="singleProduct-main flex w-full">
+          <ProductCarousel product={product}
+          />
+          {isLoggedIn ?
+            <div className="singleProduct-addToCart w-1/2 flex flex-col justify-center items-center  ">
+              <h4 className="singleProduct__addToCart__price text-2xl font-extrabold my-6">
+                ${product.price}
+              </h4>
+              <h3>{`Subtotal: ${(Math.round((product.price * qty) * 100) / 100).toFixed(2)}`}</h3>
+              <div className="singleProduct__addToCart__quantity flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
+                <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full'
+                  onClick={(e) => adjustQty(e)}>-</button>
+                <div>{qty}</div>
+                <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full'
+                  onClick={(e) => adjustQty(e)}>+</button>
+              </div>
+              <div className="singleProduct__addToCart__buyButton flex justify-center items-center h-10 w-1/2 my-6 rounded-full border border-solid bg-halie-light hover:cursor-pointer" onClick={() => addToUserCart(product)}>
+                <ShoppingCartSimple size={28} />
+                <div>Add to Cart</div>
+              </div>
             </div>
-            <div className="singleProduct__addToCart__buyButton flex justify-center items-center h-10 w-1/2 my-6 rounded-full border border-solid bg-halie-light hover:cursor-pointer" onClick={() => addToUserCart(product)}>
-              <ShoppingCartSimple size={28} />
-              <div>Add to Cart</div>
+            :
+            <div className="singleProduct-addToCart w-1/2 flex flex-col justify-center items-center  ">
+              <h4 className="singleProduct__addToCart__price text-2xl font-extrabold my-6">
+                ${product.price}
+              </h4>
+              <h3>{`Subtotal: ${(Math.round((product.price * qty) * 100) / 100).toFixed(2)}`}</h3>
+              <div className="singleProduct__addToCart__quantity flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
+                <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full'
+                  onClick={(e) => adjustQty(e)}>-</button>
+                <div>{qty}</div>
+                <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full'
+                  onClick={(e) => adjustQty(e)}>+</button>
+              </div>
+              <div className="singleProduct__addToCart__buyButton flex justify-center items-center h-10 w-1/2 my-6 rounded-full border border-solid bg-halie-light hover:cursor-pointer" onClick={() => dispatch(addToVisitorCart({ product, qty }))}>
+                <ShoppingCartSimple size={28} />
+                <div>Add to Cart</div>
+              </div>
             </div>
-          </div>
-          :
-          <div className="singleProduct-addToCart w-1/2 flex flex-col justify-center  ">
-            <h4 className="singleProduct__addToCart__price text-2xl font-extrabold my-6">
-              ${product.price}
-            </h4>
-            <h3>{`Subtotal: ${(Math.round((product.price * qty) * 100) / 100).toFixed(2)}`}</h3>
-            <div className="singleProduct__addToCart__quantity flex justify-between items-center h-10 w-1/2 my-6 rounded-full border border-solid border-black">
-              <button id='decrease' className=' text-black font-bold py-2 px-5 rounded-full'
-                onClick={(e) => adjustQty(e)}>-</button>
-              <div>{qty}</div>
-              <button id='increase' className=' text-black font-bold py-2 px-5 rounded-full'
-                onClick={(e) => adjustQty(e)}>+</button>
-            </div>
-            <div className="singleProduct__addToCart__buyButton flex justify-center items-center h-10 w-1/2 my-6 rounded-full border border-solid bg-halie-light hover:cursor-pointer" onClick={() => dispatch(addToVisitorCart({product, qty}))}>
-              <ShoppingCartSimple size={28} />
-              <div>Add to Cart</div>
-            </div>
-          </div>
-        }
-
+          }
+        </div>
       </div>
       <div className="singleProduct-description mx-96 flex flex-col">
         <div className="text-2xl font-extrabold">Description</div>
