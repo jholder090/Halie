@@ -9,14 +9,13 @@ import ProductCarousel from './ProductCarousel'
 import { addToVisitorCart } from "../slices/visitorCartSlice";
 
 
-const SingleProduct = () => {
+const SingleProduct = ({ user }) => {
   const [isHover, setHover] = useState(false);
   const [qty, setQty] = useState(1)
   const dispatch = useDispatch();
   const { productId } = useParams();
   const product = useSelector(selectSingleProduct);
   console.log("product", product)
-  const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
@@ -26,8 +25,8 @@ const SingleProduct = () => {
   }, [])
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.CartId))
-  }, [user])
+    dispatch(fetchUserCartAsync(user?.cartId))
+  }, [])
 
 
   const adjustQty = (e) => {

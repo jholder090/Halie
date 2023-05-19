@@ -3,16 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserCartAsync, selectUserCart } from "../slices/userCartSlice";
 
-const CartSummary = () => {
+const CartSummary = ({ user }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   console.log("UZER Cart", userCart)
+  const visitorCart = useSelector(state => state.visitorCart);
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.cartId))
-  }, [user])
+    dispatch(fetchUserCartAsync(user?.cartId))
+  }, [])
 
   const getUserCartSize = (userCart) => {
     let size = 0;
@@ -31,6 +32,25 @@ const CartSummary = () => {
     return (Math.round((total) * 100) / 100).toFixed(2);
   }
 
+  const getVisitorCartSize = (cart) => {
+    let size = 0;
+    for (let product of cart) {
+      size += product.quantity;
+    }
+    return size;
+  }
+
+  const getVisitorCartTotal = (visitorCart) => {
+    // for (let item of visitorCart) {
+    //   console.log("visitor item price: ", item.price)
+    // }
+    let total = 0;
+    for (let item of visitorCart) {
+      total += (item.price * item.quantity);
+    }
+    return (Math.round((total) * 100) / 100).toFixed(2);
+  }
+
 
   return (
     <div className='checkout__cartSummary w-2/5 h-33vh flex flex-col border border-solid border-border-gray p-4'>
@@ -38,9 +58,10 @@ const CartSummary = () => {
         <div className='checkout__cartSummary--itemsWrapper h-1/3 flex justify-between'>
           <div className='checkout__cartSummary--numItems font-strong'>Num Items
           </div>
-          <div>{userCart && userCart.length ? getUserCartSize(userCart) : null}</div>
+          <div>{userCart && userCart.length ? getUserCartSize(userCart) :
+          getVisitorCartSize(visitorCart)}</div>
         </div>
-        {user ?
+        {isLoggedIn ?
         <div className='checkout__cartSummary--showDetails underline cursor-pointer pt-2 text-small' onClick={() => navigate(`/cart/${user.cartId}`)}>Show Details
         </div>
         :
@@ -53,15 +74,16 @@ const CartSummary = () => {
       <div className='checkout__cartSummary--addUp h-1/3 '>
         <div className='checkout__cartSummary--subtotal flex justify-between'>
           <div>Subtotal</div>
-          <div>{userCart && userCart.length ? getCartTotal(userCart) : null}</div>
+          <div>{userCart && userCart.length ? getCartTotal(userCart) :
+          getVisitorCartTotal(visitorCart)}</div>
         </div>
         <div className='checkout__cartSummary--shipping flex justify-between'>
           <div>Shipping</div>
-          <div>$45454.44</div>
+          <div>$19.99</div>
         </div>
         <div className='checkout__cartSummary--total flex justify-between'>
           <div className='font-strong'>Total</div>
-          <div>$99999.00</div>
+          <div>${Number(getVisitorCartTotal(visitorCart)) + 19.99}</div>
         </div>
       </div>
 

@@ -8,11 +8,9 @@ import {
 } from '../slices/visitorCartSlice'
 import './cart.css'
 
-const Cart = () => {
+const Cart = ({ user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const { cartId } = useParams();
-  const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart);
   console.log("USER CART: ", userCart)
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -22,7 +20,7 @@ const Cart = () => {
 
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.cartId))
+    dispatch(fetchUserCartAsync(user?.cartId))
   }, [])
 
 

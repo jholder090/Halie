@@ -7,11 +7,10 @@ import './allProducts.css'
 
 
 
-const AllProducts = () => {
+const AllProducts = ({ user }) => {
   const [added, setAdded] = useState(false);
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart)
   console.log("Products", products)
 
@@ -20,8 +19,8 @@ const AllProducts = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.cartId))
-  }, [user])
+    dispatch(fetchUserCartAsync(user?.cartId))
+  }, [])
 
   useEffect(() => {
     setAdded(false)
