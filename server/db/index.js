@@ -9,14 +9,22 @@ const Order = require('./models/Order');
 const CartProduct = require('./models/CartProduct');
 
 // Associations
-User.hasOne(Cart, {
+Cart.hasOne(User, {
   // as: "userCart",
   // foreignKey: "userId"
 });
-Cart.belongsTo(User, {
+User.belongsTo(Cart, {
   // as: "userCart",
   // foreignKey: "userId"
 });
+
+// Cart.hasOne(User, {
+
+// })
+
+// User.belongsTo(Cart, {
+
+// })
 
 User.hasMany(Order, {
   // as: "userOrders",

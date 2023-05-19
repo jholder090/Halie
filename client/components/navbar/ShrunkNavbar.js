@@ -7,6 +7,11 @@ const ShrunkNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartS
 
   const navigate = useNavigate();
 
+  const logoutAndRedirectHome = () => {
+    dispatch(logout());
+    navigate('/home');
+  };
+
   return (
     <>
 
@@ -16,17 +21,26 @@ const ShrunkNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartS
           <li onClick={() => navigate(`/home`)} className="px-1 cursor-pointer">Home</li>
           <li onClick={() => navigate(`/products/`)} className="px-1 cursor-pointer">Products</li>
           {isLoggedIn ? (
-            <li onClick={() => navigate(`/cart/1`)} className="px-1 cursor-pointer">
+            <li onClick={() => navigate(`/cart/${user.cartId}`)} className="px-1 cursor-pointer">
               {`My Cart | ${getUserCartSize(userCart)}`}
             </li>
           ) : (
             <li onClick={() => navigate(`/visitorCart`)} className="px-1 cursor-pointer">
-              ({getVisitorCartSize(visitorCart)})
+              {`Guest Cart | ${getVisitorCartSize(visitorCart)}`}
             </li>
           )}
         </ul>
       </nav>
-
+      {isLoggedIn ? (
+        <button type="button" onClick={logoutAndRedirectHome}>
+          Logout
+        </button>
+      )
+        :
+        (<button type="button" onClick={() => navigate('/login')}>
+          Login
+        </button>)
+      }
     </>
   )
 }

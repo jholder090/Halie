@@ -20,7 +20,7 @@ const AllProducts = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.id))
+    dispatch(fetchUserCartAsync(user.cartId))
   }, [user])
 
   useEffect(() => {

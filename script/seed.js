@@ -22,23 +22,6 @@ async function seed() {
   console.log("CARTPRODUCT MAGIC METHODS", Object.keys(CartProduct.prototype));
 
   // **********************************
-
-  const joe = await User.create({
-    role: "CUST",
-    firstName: "Joe",
-    lastName: "Holder",
-    email: "joe@gmail.com",
-    password: "123"
-  })
-
-  const des = await User.create({
-    role: "CUST",
-    firstName: "Des",
-    lastName: "Holder",
-    email: "des@gmail.com",
-    password: "123"
-  })
-
   const halie = await User.create({
     role: "ADMIN",
     firstName: "Halie",
@@ -47,19 +30,55 @@ async function seed() {
     password: "123"
   })
 
+  const joe = await User.create({
+    role: "CUST",
+    firstName: "Joe",
+    lastName: "Holder",
+    email: "joe@gmail.com",
+    password: "123",
+
+  })
+
+  const des = await User.create({
+    role: "CUST",
+    firstName: "Des",
+    lastName: "Holder",
+    email: "des@gmail.com",
+    password: "123",
+
+  })
+
   console.log(`users seeded successfully`);
 
   // ******************************************
 
   const joeCart = await Cart.create({
-    userId: 1,
+    // id: joe.id,
+    // userId: joe.id,
   });
 
   const desCart = await Cart.create({
-    userId: 2,
+    // id: des.id,
+    // userId: des.id,
   })
 
   console.log(`carts seeded successfully`);
+
+
+  // ******************************************
+
+  await joe.setCart(joeCart);
+  await des.setCart(desCart);
+  // await joe.update({
+  //   cartId: joe.id
+  // })
+
+  // await des.update({
+  //   cartId: des.id
+  // })
+
+  // console.log(`carts seeded successfully`);
+  // await joeCart.update({ total: cartProducts[0].price + cartProducts[1].price + cartProducts[2].price })
 
 
   // ******************************************
@@ -269,13 +288,21 @@ async function seed() {
 
   // **************************************
 
-  await joeCart.update({total: cartProducts[0].price + cartProducts[1].price + cartProducts[2].price})
+  await joeCart.update({ total: cartProducts[0].price + cartProducts[1].price + cartProducts[2].price })
 
-  await desCart.update({total: cartProducts[3].price + cartProducts[4].price + cartProducts[5].price})
+  await desCart.update({ total: cartProducts[3].price + cartProducts[4].price + cartProducts[5].price })
 
-console.log("Carts updated successfully")
+  console.log("Carts updated successfully")
 
   // **************************************
+
+  // const bobCart = await Cart.create({
+
+  // });
+
+  // const timCart = await Cart.create({
+
+  // });
 
   // const orderProducts = [
   //   {

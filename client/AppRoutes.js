@@ -16,6 +16,9 @@ import {
 const AppRoutes = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.me);
+  // console.log("APP ROUTES User.cartID: ", user.cartId)
+
+
 
   useEffect(() => {
     dispatch(me());
@@ -28,7 +31,7 @@ const AppRoutes = () => {
         <Route path='/products' element={<AllProducts />} />
         <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/cart/:cartId' element={<Cart />} />
+        <Route path={`/cart/${user.cartId}`} element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/completion' element={<Completion />} />
       </Routes>

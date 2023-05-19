@@ -11,7 +11,7 @@ import './cart.css'
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { cartId } = useParams();
+  // const { cartId } = useParams();
   const user = useSelector(state => state.auth.me);
   let userCart = useSelector(selectUserCart);
   console.log("USER CART: ", userCart)
@@ -22,7 +22,7 @@ const Cart = () => {
 
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(cartId))
+    dispatch(fetchUserCartAsync(user.cartId))
   }, [])
 
 

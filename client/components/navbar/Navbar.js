@@ -14,7 +14,7 @@ const Navbar = () => {
   const visitorCart = useSelector(state => state.visitorCart);
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.id))
+    dispatch(fetchUserCartAsync(user.cartId))
   }, [user])
 
   useEffect(() => {

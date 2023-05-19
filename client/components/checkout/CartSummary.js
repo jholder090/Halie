@@ -11,7 +11,7 @@ const CartSummary = () => {
   console.log("UZER Cart", userCart)
 
   useEffect(() => {
-    dispatch(fetchUserCartAsync(user.id))
+    dispatch(fetchUserCartAsync(user.cartId))
   }, [user])
 
   const getUserCartSize = (userCart) => {
