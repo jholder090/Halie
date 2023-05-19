@@ -25,7 +25,7 @@ const ShrunkNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartS
               {`My Cart | ${getUserCartSize(userCart)}`}
             </li>
           ) : (
-            <li onClick={() => navigate(`/visitorCart`)} className="px-1 cursor-pointer">
+            <li onClick={() => navigate(`/cart/guest`)} className="px-1 cursor-pointer">
               {`Guest Cart | ${getVisitorCartSize(visitorCart)}`}
             </li>
           )}

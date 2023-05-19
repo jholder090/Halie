@@ -40,8 +40,13 @@ const CartSummary = () => {
           </div>
           <div>{userCart && userCart.length ? getUserCartSize(userCart) : null}</div>
         </div>
-        <div className='checkout__cartSummary--showDetails underline cursor-pointer pt-2 text-small' onClick={() => navigate('/cart/1')}>Show Details
+        {user ?
+        <div className='checkout__cartSummary--showDetails underline cursor-pointer pt-2 text-small' onClick={() => navigate(`/cart/${user.cartId}`)}>Show Details
         </div>
+        :
+        <div className='checkout__cartSummary--showDetails underline cursor-pointer pt-2 text-small' onClick={() => navigate(`/cart/guest`)}>Show Details
+        </div> }
+
       </div>
 
 

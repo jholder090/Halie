@@ -27,7 +27,7 @@ const FullNavbar = ({ user, isLoggedIn, userCart, visitorCart, getVisitorCartSiz
               {`My Cart | ${getUserCartSize(userCart)}`}
             </li>
           ) : (
-            <li onClick={() => navigate(`/cart/1`)} className="px-1 cursor-pointer">
+            <li onClick={() => navigate(`/cart/guest`)} className="px-1 cursor-pointer">
               {`Guest Cart | ${getVisitorCartSize(visitorCart)}`}
             </li>
           )}

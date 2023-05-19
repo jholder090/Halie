@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { me } from './components/auth/authSlice'
@@ -31,9 +31,12 @@ const AppRoutes = () => {
         <Route path='/products' element={<AllProducts />} />
         <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/login' element={<Login />} />
-        <Route path={`/cart/${user.cartId}`} element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/completion' element={<Completion />} />
+        {user && user.length ?
+          <Route path={`/cart/${user.cartId}`} element={<Cart />} />
+          :
+          <Route path={`/cart/guest`} element={<Cart />} />}
       </Routes>
     </div>
   )
