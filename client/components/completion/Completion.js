@@ -3,7 +3,7 @@ import React from 'react';
 const Completion = () => {
 
   return (
-    <div>Completed!</div>
+    <div className='h-max'>Completed!</div>
   )
 }
 

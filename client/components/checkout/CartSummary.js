@@ -83,7 +83,7 @@ const CartSummary = ({ user }) => {
         </div>
         <div className='checkout__cartSummary--total flex justify-between'>
           <div className='font-strong'>Total</div>
-          <div>${Number(getVisitorCartTotal(visitorCart)) + 19.99}</div>
+          <div>${(Math.round((Number(getVisitorCartTotal(visitorCart)) + 19.99) * 100) / 100).toFixed(2)  }</div>
         </div>
       </div>
 
